@@ -13,39 +13,76 @@ import MGSwipeTableCell
 class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     
     var activities : [HTActivity]?
+    var segments : [HTSegment]?
     let deletedColor  = UIColor.init(red: 248.0/255.0, green: 85.0/255.0, blue: 31.0/255.0, alpha: 1)
     let editedColor = UIColor.init(red: 173.0/255.0, green: 182.0/255.0, blue: 217.0/255.0, alpha: 1)
     let accurateColor = UIColor.init(red: 4.0/255.0, green: 235.0/255.0, blue: 135.0/255.0, alpha: 1)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.title = "Activities"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action:#selector(dismissVC))
         
         activities = HyperTrack.getActivitiesFromSDK(date: Date())
+        segments = HyperTrack.getSegments(date:Date())
+        let processSegmentsOp =  processSegments(segments: segments!)
+        print(processSegmentsOp.description)
+    }
+    
+    
+    func processSegments(segments:[HTSegment]) -> [HTSegment]{
+        var processedSegment = [HTSegment]()
+        var currentStop : HTSegment? = nil
+        var stopEndTime : Date? = nil
+        for segment in segments{
+            if segment.type == "stop"{
+                currentStop = segment
+                stopEndTime = segment.endTime
+                segment.segments = [HTSegment]()
+                processedSegment.append(segment)
+                continue
+            }
+            
+            if currentStop != nil{
+                if stopEndTime != nil {
+                    if (Double((stopEndTime?.timeIntervalSince1970)!) > Double((segment.startTime?.timeIntervalSince1970)!)) {
+                        currentStop?.segments?.append(segment)
+                    }else{
+                        currentStop = nil
+                        stopEndTime = nil
+                    }
+                }else{
+                    currentStop?.segments?.append(segment)
+                }
+            }else{
+                processedSegment.append(segment)
+            }
+        }
+        
+        return processedSegment
     }
     
     func dismissVC(){
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if let activities = self.activities{
@@ -57,7 +94,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! ActivityTableViewCell
@@ -66,8 +103,8 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         cell.backgroundColor = UIColor.white
         cell.contentView.alpha = 1
         
-
-        var feedback = UserDefaults.standard.string(forKey: (activity?.activityUUID)!)
+        
+        var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
         if let feedback = feedback{
             cell.backgroundColor = editedColor
             if (feedback == "accurate"){
@@ -78,7 +115,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             
             cell.contentView.alpha = 0.8
         }
-    
+        
         cell.setUpActivity(activity: activity!)
         //configure left buttons
         cell.delegate = self
@@ -97,7 +134,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         
     }
     
-
+    
     func swipeTableCell(_ cell: MGSwipeTableCell, canSwipe direction: MGSwipeDirection) -> Bool {
         return true;
     }
@@ -108,7 +145,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         swipeSettings.transition = MGSwipeTransition.border;
         expansionSettings.buttonIndex = 0;
         let path = self.tableView.indexPath(for: cell)!;
-
+        
         if direction == MGSwipeDirection.leftToRight {
             expansionSettings.fillOnTrigger = true;
             expansionSettings.threshold = 1.1;
@@ -119,7 +156,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                 MGSwipeButton(title: "Accurate", backgroundColor: color,padding: padding, callback: { (cell) -> Bool in
                     cell.refreshContentView();
                     let activity = self.activities?[path.row]
-                    let feedback = ActivityFeedback.init(uuid: (activity?.activityUUID)!)
+                    let feedback = ActivityFeedback.init(uuid: (activity?.uuid)!)
                     feedback.feedbackType = "accurate"
                     RequestService.shared.sendActivityFeedback(feedback: feedback)
                     self.tableView.reloadRows(at: [path], with: UITableViewRowAnimation.none)
@@ -134,18 +171,19 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             let color1 = UIColor.init(red:1.0, green:59/255.0, blue:50/255.0, alpha:1.0);
             let trash = MGSwipeButton(title: "Delete", backgroundColor: color1, padding: padding, callback: { (cell) -> Bool in
                 let activity = self.activities?[path.row]
-                let feedback = ActivityFeedback.init(uuid: (activity?.activityUUID)!)
+                let feedback = ActivityFeedback.init(uuid: (activity?.uuid
+                    )!)
                 feedback.feedbackType = "deleted"
                 feedback.markAllInaccurate()
                 RequestService.shared.sendActivityFeedback(feedback: feedback)
                 self.tableView.reloadRows(at: [path], with: UITableViewRowAnimation.none)
-
+                
                 return false;
             });
-        
+            
             return [trash];
         }
         
     }
-
+    
 }

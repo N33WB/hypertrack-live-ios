@@ -37,6 +37,23 @@ class ActivityTableViewCell: MGSwipeTableCell {
                 self.subtitleText?.text = (activity.numOfSteps?.description)! + " steps | " + (activity.distance?.description)!
             }
         }
+
+        
+        if activity.activityType == "walking"{
+            activityImage.image = UIImage.init(named: "walking")
+        }
+        else if activity.activityType == "running"{
+            activityImage.image = UIImage.init(named: "running")
+        }
+        else  if activity.activityType == "stationary"{
+            activityImage.image = UIImage.init(named: "stationary")
+        }
+        else if activity.activityType == "automotive"{
+            activityImage.image = UIImage.init(named: "automotive")
+        }
+        else if activity.activityType == "cycling"{
+            activityImage.image = UIImage.init(named: "cycling")
+        }
         
         self.startTime.text = activity.startTime?.toString(dateFormat: "HH:mm")
         if activity.endTime != nil {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HyperTrack
 
 class ActivityFeedback: NSObject {
    
@@ -55,9 +56,11 @@ class ActivityFeedback: NSObject {
         self.isTypeAccurate = false
     }
     
-    func toDict() -> [String:Any] {
+    func toRequestParams() -> [String:Any] {
         var activityDict = [String:Any]()
-        activityDict["activity"] = activityId
+        activityDict["user_id"] = HyperTrack.getUserId()
+
+        activityDict["lookup_id"] = activityId
         activityDict["feedback_type"] = feedbackType
         if let comment = self.userComments {
             activityDict["user_comments"] = comment

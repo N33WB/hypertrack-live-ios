@@ -4,6 +4,7 @@
 def hypertrack_pods
     #pod 'HyperTrack'
     pod 'HyperTrack.local', :path => '~/hypertrack-ios-v3/HyperTrack.local.podspec'
+    pod 'Wallet'
 end
 
 target 'htlive-ios' do
@@ -19,5 +20,7 @@ target 'htlive-ios' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'MediumMenu'
+  pod 'XLForm'
+  pod 'MGSwipeTableCell'
 
 end

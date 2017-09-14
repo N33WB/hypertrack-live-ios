@@ -28,13 +28,12 @@ class HyperTrackAppService: NSObject {
         self.flowInteractor.presentFlowsIfNeeded()
         self.setupBranchDeeplink()
         UNUserNotificationCenter.current().delegate = self
-
-        return true
+               return true
     }
     
        
     func setupHyperTrack() {
-        HyperTrack.initialize("pk_e956d4c123e8b726c10b553fe62bbaa9c1ac9451")
+        HyperTrack.initialize("pk_f3c3ee5c00980fce1dcf074ef72b75cbaac1ebc9")
         HyperTrack.setEventsDelegate(eventDelegate: self)
         if(HyperTrack.getUserId() != nil){
             HyperTrack.startTracking()
@@ -209,12 +208,20 @@ class HyperTrackAppService: NSObject {
     }
     
     @objc func sendLocalNotification(title: String, body: String) {
+       
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.removeAllDeliveredNotifications() // To remove all delivered notifications
+        } else {
+            UIApplication.shared.cancelAllLocalNotifications()
+        }
+        
         let notification = UILocalNotification()
         notification.alertTitle = title
         notification.alertBody = body
         notification.alertAction = "Open"
         
-        notification.fireDate = Date.init(timeInterval: 3, since: Date())
+        notification.fireDate = Date.init(timeInterval: 1, since: Date())
         UIApplication.shared.scheduleLocalNotification(notification)
     }
 
@@ -268,6 +275,29 @@ extension HyperTrackAppService: UNUserNotificationCenterDelegate{
         // Else handle actions for other notification types. . .
     }
     
+    
+    /**
+     Implement this delegate method to get location status update for tracked action
+     */
+    func locationStatusChangedFor(action:HyperTrackAction ,isEnabled:Bool){
+        print("bgbergbrehg")
+    }
+    
+    /**
+     Implement this delegate method to get network status update for tracked action
+     */
+    func networkStatusChangedFor(action:HyperTrackAction, isConnected:Bool){
+        print("bgbergbreffffhg")
+    }
+    
+    
+    func activityChangedTo(activity:HTActivity){
+       
+        let metaText = activity.descriptionStr ?? ("You are " + activity.activityType)
+        self.sendLocalNotification(title: activity.activityType, body: metaText)
+    }
+    
+
 
 }
 

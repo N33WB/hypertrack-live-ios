@@ -18,7 +18,7 @@ class FeedbackDetailVC: XLFormViewController {
         self.title = activity?.activityType
 
 
-        var feedback = UserDefaults.standard.string(forKey: (activity?.activityUUID)!)
+        var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
         if let feedback = feedback{
 
         }else{
@@ -95,7 +95,7 @@ class FeedbackDetailVC: XLFormViewController {
 
   
     func saveFeedback(){
-        let feedback = ActivityFeedback.init(uuid: (self.activity?.activityUUID)!)
+        let feedback = ActivityFeedback.init(uuid: (self.activity?.uuid)!)
         
         var type = self.form.formRow(withTag: "type")?.value  as? String
         if type != activity?.activityType{

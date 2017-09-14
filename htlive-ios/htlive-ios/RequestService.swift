@@ -70,10 +70,10 @@ class RequestService {
             return
         }
         
-        let url = "\(baseUrl)activity_feedbacks/"
+        let url = "\(baseUrl)activity_feedback/"
         let headers = ["Authorization": "token \(token)"]
         
-        Alamofire.request(url, method: .post, parameters: feedback.toDict(), encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
+        Alamofire.request(url, method: .post, parameters: feedback.toRequestParams(), encoding: JSONEncoding.default, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success: break
 //                completionHandler(nil)
