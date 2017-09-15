@@ -29,6 +29,22 @@ class ActivityTableViewCell: MGSwipeTableCell {
         // Configure the view for the selected state
     }
     
+    func setUpSegment(segment:HTSegment){
+        
+        if segment.type == "stop"{
+            self.activityType.text = "Stop"
+         }
+        
+        self.startTime.text = segment.startTime?.toString(dateFormat: "HH:mm")
+        if segment.endTime != nil {
+            self.endTime.text = segment.endTime?.toString(dateFormat: "HH:mm")
+        }
+        else{
+            self.endTime.text = ""
+        }
+
+    }
+    
     func setUpActivity(activity:HTActivity){
         self.activityType.text = activity.activityType
         self.subtitleText?.text = ""
@@ -37,7 +53,6 @@ class ActivityTableViewCell: MGSwipeTableCell {
                 self.subtitleText?.text = (activity.numOfSteps?.description)! + " steps | " + (activity.distance?.description)!
             }
         }
-
         
         if activity.activityType == "walking"{
             activityImage.image = UIImage.init(named: "walking")
@@ -62,6 +77,16 @@ class ActivityTableViewCell: MGSwipeTableCell {
         else{
             self.endTime.text = ""
         }
+    }
+    
+    
+    func clear(){
+       
+        self.activityType.text = ""
+        self.subtitleText?.text = ""
+        self.startTime.text = ""
+        self.endTime.text = ""
+        self.activityImage.image = nil
     }
 
 }

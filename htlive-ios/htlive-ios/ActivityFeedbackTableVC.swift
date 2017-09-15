@@ -17,6 +17,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     let deletedColor  = UIColor.init(red: 248.0/255.0, green: 85.0/255.0, blue: 31.0/255.0, alpha: 1)
     let editedColor = UIColor.init(red: 173.0/255.0, green: 182.0/255.0, blue: 217.0/255.0, alpha: 1)
     let accurateColor = UIColor.init(red: 4.0/255.0, green: 235.0/255.0, blue: 135.0/255.0, alpha: 1)
+    var processedSegments : [HTSegment]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,8 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         
         activities = HyperTrack.getActivitiesFromSDK(date: Date())
         segments = HyperTrack.getSegments(date:Date())
-        let processSegmentsOp =  processSegments(segments: segments!)
-        print(processSegmentsOp.description)
+        processedSegments =  processSegments(segments: segments!)
+        print(processedSegments?.description ?? "")
     }
     
     
@@ -39,7 +40,10 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         var processedSegment = [HTSegment]()
         var currentStop : HTSegment? = nil
         var stopEndTime : Date? = nil
+        var index = 0
         for segment in segments{
+            print(index)
+            index = index + 1
             if segment.type == "stop"{
                 currentStop = segment
                 stopEndTime = segment.endTime
@@ -55,6 +59,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                     }else{
                         currentStop = nil
                         stopEndTime = nil
+                        processedSegment.append(segment)
                     }
                 }else{
                     currentStop?.segments?.append(segment)
@@ -85,8 +90,8 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if let activities = self.activities{
-            return (activities.count)
+        if let processedSegments = self.processedSegments{
+            return (processedSegments.count)
         }
         return 0
     }
@@ -96,27 +101,44 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     }
     
     
+    func getActivityFromUUID(uuid : String) -> HTActivity?{
+        for activity in self.activities!{
+            if activity.uuid == uuid {
+                return activity
+            }
+        }
+        return nil
+    }
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! ActivityTableViewCell
-        var activity = activities?[indexPath.row]
+        var segment = processedSegments?[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = UIColor.white
         cell.contentView.alpha = 1
         
+        cell.clear()
+        cell.setUpSegment(segment: segment!)
         
-        var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
-        if let feedback = feedback{
-            cell.backgroundColor = editedColor
-            if (feedback == "accurate"){
-                cell.backgroundColor = accurateColor
-            }else if feedback == "deleted"{
-                cell.backgroundColor = deletedColor
+        if segment?.type == "activity"{
+            var activity = getActivityFromUUID(uuid: (segment?.uuid)!)
+            if(activity != nil){
+                cell.setUpActivity(activity: activity!)
+                var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
+                if let feedback = feedback{
+                    cell.backgroundColor = editedColor
+                    if (feedback == "accurate"){
+                        cell.backgroundColor = accurateColor
+                    }else if feedback == "deleted"{
+                        cell.backgroundColor = deletedColor
+                    }
+                    cell.contentView.alpha = 0.8
+                }
+
             }
-            
-            cell.contentView.alpha = 0.8
         }
         
-        cell.setUpActivity(activity: activity!)
         //configure left buttons
         cell.delegate = self
         return cell
