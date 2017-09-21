@@ -14,7 +14,6 @@ class ActivityTableViewCell: MGSwipeTableCell {
 
      @IBOutlet weak var subtitleText : UILabel!
      @IBOutlet weak var  activityType : UILabel!
-     @IBOutlet weak var activityImage : UIImageView!
      @IBOutlet weak var startTime : UILabel!
      @IBOutlet weak var endTime : UILabel!
 
@@ -35,6 +34,13 @@ class ActivityTableViewCell: MGSwipeTableCell {
             self.activityType.text = "Stop"
          }
         
+        var timeText = ""
+        var isLive = false
+        let timeElapsed = self.getDuration(segment: segment)
+        self.subtitleText?.text = ""
+
+        timeText = secondsToHoursMinutesSeconds(totalSeconds: timeElapsed)
+
         self.startTime.text = segment.startTime?.toString(dateFormat: "HH:mm")
         if segment.endTime != nil {
             self.endTime.text = segment.endTime?.toString(dateFormat: "HH:mm")
@@ -42,7 +48,21 @@ class ActivityTableViewCell: MGSwipeTableCell {
         else{
             self.endTime.text = ""
         }
-
+        if self.subtitleText.text == ""{
+            self.subtitleText?.text = timeText
+        }else{
+            self.subtitleText?.text = self.subtitleText.text! + " | " + timeText
+        }
+    }
+    
+    func getDuration(segment : HTSegment) -> Double{
+        if segment.endTime != nil {
+            let timeElapsed = -1.0 * (segment.startTime?.timeIntervalSince(segment.endTime!))!
+            return timeElapsed
+        } else {
+            let timeElapsed = -1.0 * (segment.startTime?.timeIntervalSinceNow)!
+            return timeElapsed
+        }
     }
     
     func setUpActivity(activity:HTActivity){
@@ -50,24 +70,8 @@ class ActivityTableViewCell: MGSwipeTableCell {
         self.subtitleText?.text = ""
         if activity.activityType == "walking" || activity.activityType == "running"{
             if activity.numOfSteps != nil {
-                self.subtitleText?.text = (activity.numOfSteps?.description)! + " steps | " + (activity.distance?.description)!
+                self.subtitleText?.text = (activity.numOfSteps?.description)! + " steps | " + (activity.distance?.description)! + " m"
             }
-        }
-        
-        if activity.activityType == "walking"{
-            activityImage.image = UIImage.init(named: "walking")
-        }
-        else if activity.activityType == "running"{
-            activityImage.image = UIImage.init(named: "running")
-        }
-        else  if activity.activityType == "stationary"{
-            activityImage.image = UIImage.init(named: "stationary")
-        }
-        else if activity.activityType == "automotive"{
-            activityImage.image = UIImage.init(named: "automotive")
-        }
-        else if activity.activityType == "cycling"{
-            activityImage.image = UIImage.init(named: "cycling")
         }
         
         self.startTime.text = activity.startTime?.toString(dateFormat: "HH:mm")
@@ -77,8 +81,36 @@ class ActivityTableViewCell: MGSwipeTableCell {
         else{
             self.endTime.text = ""
         }
+        
+        var timeText = ""
+        var isLive = false
+        let timeElapsed = self.getDuration(segment: activity)
+        timeText = secondsToHoursMinutesSeconds(totalSeconds: timeElapsed)
+
+       
+        if self.subtitleText.text == ""{
+            self.subtitleText?.text = timeText
+        }else{
+            self.subtitleText?.text = self.subtitleText.text! + " | " + timeText
+        }
     }
     
+    
+    
+    func secondsToHoursMinutesSeconds (totalSeconds : Double) -> String {
+        let hours:Int = Int(totalSeconds.truncatingRemainder(dividingBy: 86400) / 3600)
+        let minutes:Int = Int(totalSeconds.truncatingRemainder(dividingBy: 3600) / 60)
+        let seconds:Int = Int(totalSeconds.truncatingRemainder(dividingBy: 60))
+        
+        if hours > 0 {
+            return String(format: "%i hours %02i mins %02i secs", hours, minutes, seconds)
+        } else if minutes > 0 {
+            return String(format: "%02i mins %02i secs", minutes, seconds)
+        }else {
+            return String(format: "%02i secs", seconds)
+        }
+    }
+
     
     func clear(){
        
@@ -86,7 +118,6 @@ class ActivityTableViewCell: MGSwipeTableCell {
         self.subtitleText?.text = ""
         self.startTime.text = ""
         self.endTime.text = ""
-        self.activityImage.image = nil
     }
 
 }

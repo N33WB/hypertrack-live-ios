@@ -164,7 +164,7 @@ SOFTWARE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>GzipSwift</string>
+			<string>GzipSwift-beta</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

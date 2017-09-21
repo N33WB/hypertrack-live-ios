@@ -11,14 +11,14 @@ import XLForm
 import HyperTrack
 class FeedbackDetailVC: XLFormViewController {
     
+    var segment : HTSegment? = nil
     var activity : HTActivity? = nil
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = activity?.activityType
-
-
-        var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
+        self.title = segment?.type
+        
+        var feedback = UserDefaults.standard.string(forKey: (segment?.uuid)!)
         if let feedback = feedback{
 
         }else{
@@ -27,61 +27,124 @@ class FeedbackDetailVC: XLFormViewController {
         let form : XLFormDescriptor
         var section : XLFormSectionDescriptor
         var row : XLFormRowDescriptor
+            
         
-        form = XLFormDescriptor(title: activity?.activityType)
-        
-        section = XLFormSectionDescriptor.formSection()
-        
-        // Selector Picker View
-        row = XLFormRowDescriptor(tag: "type", rowType:XLFormRowDescriptorTypeSelectorPickerView, title:"Activity")
-        row.selectorOptions = ["walking", "running", "cycling", "driving", "stationary"]
-        row.value = activity?.activityType
-        section.addFormRow(row)
-        form.addFormSection(section)
+        if segment?.type == "stop"{
+            
+            form = XLFormDescriptor(title: segment?.type)
 
-        section = XLFormSectionDescriptor.formSection()
-        // Starts
-        row = XLFormRowDescriptor(tag: "starts", rowType: XLFormRowDescriptorTypeDateTimeInline, title: "Starts")
-        row.value = activity?.startTime
-        section.addFormRow(row)
-        
-        // Ends
-        row = XLFormRowDescriptor(tag: "ends", rowType: XLFormRowDescriptorTypeDateTimeInline, title: "Ends")
-        row.value = activity?.endTime
-        section.addFormRow(row)
-        
-        form.addFormSection(section)
+            if segment?.segments != nil {
+                if (segment?.segments)!.count > 0  {
+                    section = XLFormSectionDescriptor.formSection()
+                    
+                    // Selector Picker View
+                    row = XLFormRowDescriptor(tag: "segments", rowType:XLFormRowDescriptorTypeSelectorPush, title:"Activities")
+                    section.addFormRow(row)
+                    form.addFormSection(section)
+                }
+            }
+            
+            section = XLFormSectionDescriptor.formSection()
+            
+         
+            
+            section = XLFormSectionDescriptor.formSection()
+            // Starts
+            row = XLFormRowDescriptor(tag: "starts", rowType: XLFormRowDescriptorTypeDateTimeInline, title: "Starts")
+            row.value = segment?.startTime
+            section.addFormRow(row)
+            
+            // Ends
+            row = XLFormRowDescriptor(tag: "ends", rowType: XLFormRowDescriptorTypeDateTimeInline, title: "Ends")
+            row.value = segment?.endTime
+            section.addFormRow(row)
+            
+            
+            
+            form.addFormSection(section)
+            
+            
+            section = XLFormSectionDescriptor.formSection()
+            form.addFormSection(section)
+            
+            // Notes
+            row = XLFormRowDescriptor(tag: "comments", rowType:XLFormRowDescriptorTypeTextView)
+            row.cellConfigAtConfigure["textView.placeholder"] = "Any Other Comments"
+            section.addFormRow(row)
+            
+            self.form = form
+            
 
-        section = XLFormSectionDescriptor.formSection()
+        }else{
+            
+            form = XLFormDescriptor(title: activity?.activityType)
 
-        row = XLFormRowDescriptor(tag: "numOfSteps", rowType: XLFormRowDescriptorTypeText, title:"Steps")
-        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.right.rawValue
-        row.isRequired = true
-        row.value = activity?.numOfSteps
-        section.addFormRow(row)
-        
-        
-        
-        row = XLFormRowDescriptor(tag: "distance", rowType: XLFormRowDescriptorTypeText, title:"Step Distance")
-        row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.right.rawValue
-        row.isRequired = true
-        row.value = activity?.distance
-        section.addFormRow(row)
+            if activity?.segments != nil {
+                if (activity?.segments)!.count > 0  {
+                    section = XLFormSectionDescriptor.formSection()
+                    
+                    // Selector Picker View
+                    row = XLFormRowDescriptor(tag: "segments", rowType:XLFormRowDescriptorTypeSelectorPush, title:"Activities")
+                    section.addFormRow(row)
+                    form.addFormSection(section)
+                }
+            }
+            
+            section = XLFormSectionDescriptor.formSection()
+            
+            // Selector Picker View
+            row = XLFormRowDescriptor(tag: "type", rowType:XLFormRowDescriptorTypeSelectorPickerView, title:"Activity")
+            row.selectorOptions = ["walking", "running", "cycling", "driving", "stationary"]
+            row.value = activity?.activityType
+            section.addFormRow(row)
+            form.addFormSection(section)
+            
+            section = XLFormSectionDescriptor.formSection()
+            // Starts
+            row = XLFormRowDescriptor(tag: "starts", rowType: XLFormRowDescriptorTypeDateTimeInline, title: "Starts")
+            row.value = activity?.startTime
+            section.addFormRow(row)
+            
+            // Ends
+            row = XLFormRowDescriptor(tag: "ends", rowType: XLFormRowDescriptorTypeDateTimeInline, title: "Ends")
+            row.value = activity?.endTime
+            section.addFormRow(row)
+            
+            form.addFormSection(section)
+            
+            section = XLFormSectionDescriptor.formSection()
+            
+            row = XLFormRowDescriptor(tag: "numOfSteps", rowType: XLFormRowDescriptorTypeText, title:"Steps")
+            row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.right.rawValue
+            row.isRequired = true
+            row.value = activity?.numOfSteps
+            section.addFormRow(row)
+            
+            
+            
+            row = XLFormRowDescriptor(tag: "distance", rowType: XLFormRowDescriptorTypeText, title:"Step Distance")
+            row.cellConfigAtConfigure["textField.textAlignment"] =  NSTextAlignment.right.rawValue
+            row.isRequired = true
+            row.value = activity?.distance
+            section.addFormRow(row)
+            
+            form.addFormSection(section)
+            
+            
+            section = XLFormSectionDescriptor.formSection()
+            form.addFormSection(section)
+            
+            // Notes
+            row = XLFormRowDescriptor(tag: "comments", rowType:XLFormRowDescriptorTypeTextView)
+            row.cellConfigAtConfigure["textView.placeholder"] = "Any Other Comments"
+            section.addFormRow(row)
+            
+            self.form = form
+            
 
-        form.addFormSection(section)
-
+        }
         
-        section = XLFormSectionDescriptor.formSection()
-        form.addFormSection(section)
-        
-        // Notes
-        row = XLFormRowDescriptor(tag: "comments", rowType:XLFormRowDescriptorTypeTextView)
-        row.cellConfigAtConfigure["textView.placeholder"] = "Any Other Comments"
-        section.addFormRow(row)
-        
-        self.form = form
-
-        // Uncomment the following line to preserve selection between presentations
+                // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -155,6 +218,19 @@ class FeedbackDetailVC: XLFormViewController {
         
         self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    
+    override func didSelectFormRow(_ formRow: XLFormRowDescriptor!) {
+        if formRow.tag == "segments"{
+            
+            let activityFeedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "ActivityFeedbackTableVC") as! ActivityFeedbackTableVC
+            let navVC = UINavigationController.init(rootViewController: activityFeedbackVC)
+            activityFeedbackVC.processedSegments = (segment?.segments)!
+            activityFeedbackVC.isDetailedView = true
+            self.present(navVC, animated: true, completion: nil)
+        
+        }
     }
 
    

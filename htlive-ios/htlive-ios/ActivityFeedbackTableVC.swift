@@ -17,8 +17,9 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     let deletedColor  = UIColor.init(red: 248.0/255.0, green: 85.0/255.0, blue: 31.0/255.0, alpha: 1)
     let editedColor = UIColor.init(red: 173.0/255.0, green: 182.0/255.0, blue: 217.0/255.0, alpha: 1)
     let accurateColor = UIColor.init(red: 4.0/255.0, green: 235.0/255.0, blue: 135.0/255.0, alpha: 1)
-    var processedSegments : [HTSegment]? = nil
-    
+    public var processedSegments = [HTSegment]()
+    var isDetailedView = false
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,13 +29,24 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.title = "Activities"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action:#selector(dismissVC))
-        
         activities = HyperTrack.getActivitiesFromSDK(date: Date())
         segments = HyperTrack.getSegments(date:Date())
-        processedSegments =  processSegments(segments: segments!)
-        print(processedSegments?.description ?? "")
+
+         if !isDetailedView{
+            processedSegments =  processSegments(segments: segments!)
+        }
+        print(processedSegments.description )
     }
     
+    func getDuration(segment : HTSegment) -> Double{
+        if segment.endTime != nil {
+            let timeElapsed = -1.0 * (segment.startTime?.timeIntervalSince(segment.endTime!))!
+            return timeElapsed
+        } else {
+            let timeElapsed = -1.0 * (segment.startTime?.timeIntervalSinceNow)!
+            return timeElapsed
+        }
+    }
     
     func processSegments(segments:[HTSegment]) -> [HTSegment]{
         var processedSegment = [HTSegment]()
@@ -43,29 +55,43 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         var index = 0
         for segment in segments{
             print(index)
+            print(segment.type)
             index = index + 1
             if segment.type == "stop"{
                 currentStop = segment
                 stopEndTime = segment.endTime
                 segment.segments = [HTSegment]()
-                processedSegment.append(segment)
+                if getDuration(segment: segment) > 30.0 {
+                    processedSegment.append(segment)
+                }
                 continue
             }
             
             if currentStop != nil{
                 if stopEndTime != nil {
                     if (Double((stopEndTime?.timeIntervalSince1970)!) > Double((segment.startTime?.timeIntervalSince1970)!)) {
-                        currentStop?.segments?.append(segment)
+                        var activity = getActivityFromUUID(uuid: segment.uuid)
+                        if getDuration(segment: segment) > 20 {
+                            currentStop?.segments?.append(activity!)
+                        }
+
                     }else{
                         currentStop = nil
                         stopEndTime = nil
-                        processedSegment.append(segment)
+                        if getDuration(segment: segment) > 30.0 {
+                            processedSegment.append(segment)
+                        }
                     }
                 }else{
-                    currentStop?.segments?.append(segment)
+                    var activity = getActivityFromUUID(uuid: segment.uuid)
+                    if getDuration(segment: segment) > 20 {
+                        currentStop?.segments?.append(activity!)
+                    }
                 }
             }else{
-                processedSegment.append(segment)
+                if getDuration(segment: segment) > 30.0 {
+                    processedSegment.append(segment)
+                }
             }
         }
         
@@ -85,17 +111,26 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        if isDetailedView {
+            return 1
+        }
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if let processedSegments = self.processedSegments{
+        if isDetailedView {
+            return (self.processedSegments.count)
+        }
+        
+        if section == 0 {
+            return 1
+        }else {
             return (processedSegments.count)
         }
         return 0
-    }
-    
+}
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -112,46 +147,71 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! ActivityTableViewCell
-        var segment = processedSegments?[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
-        cell.backgroundColor = UIColor.white
-        cell.contentView.alpha = 1
         
-        cell.clear()
-        cell.setUpSegment(segment: segment!)
-        
-        if segment?.type == "activity"{
-            var activity = getActivityFromUUID(uuid: (segment?.uuid)!)
-            if(activity != nil){
-                cell.setUpActivity(activity: activity!)
-                var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
-                if let feedback = feedback{
-                    cell.backgroundColor = editedColor
-                    if (feedback == "accurate"){
-                        cell.backgroundColor = accurateColor
-                    }else if feedback == "deleted"{
-                        cell.backgroundColor = deletedColor
-                    }
-                    cell.contentView.alpha = 0.8
-                }
+        if indexPath.section == 0 && !isDetailedView {
+            var currentActivity = HyperTrack.getCurrentActivity()
+            cell.setUpSegment(segment: currentActivity!)
+            cell.setUpActivity(activity: currentActivity!)
 
+
+        }else {
+            var segment = processedSegments[indexPath.row]
+            cell.accessoryType = .disclosureIndicator
+            cell.backgroundColor = UIColor.white
+            cell.contentView.alpha = 1
+            cell.clear()
+            cell.setUpSegment(segment: segment)
+            
+            if segment.type == "activity"{
+                var activity = getActivityFromUUID(uuid: (segment.uuid))
+                if(activity != nil){
+                    cell.setUpActivity(activity: activity!)
+                    var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
+                    if let feedback = feedback{
+                        cell.backgroundColor = editedColor
+                        if (feedback == "accurate"){
+                            cell.backgroundColor = accurateColor
+                        }else if feedback == "deleted"{
+                            cell.backgroundColor = deletedColor
+                        }
+                        cell.contentView.alpha = 0.8
+                    }
+                }
             }
+            //configure left buttons
+            cell.delegate = self
         }
         
-        //configure left buttons
-        cell.delegate = self
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if isDetailedView {
+            return "Today"
+        }
+        
+        if section == 0 {
+            return "Live"
+        }else {
+            return "Today"
+        }
         return "Today"
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activityFeedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackDetailVC") as! FeedbackDetailVC
-        let activity = activities?[indexPath.row]
-        activityFeedbackVC.activity = activity
+ 
+        let segment = processedSegments[indexPath.row]
+        activityFeedbackVC.segment  = segment
+        if segment.type == "stop"{
+            
+        }else{
+            var activity = getActivityFromUUID(uuid: segment.uuid)
+            activityFeedbackVC.activity = activity
+        }
         self.navigationController?.pushViewController(activityFeedbackVC, animated: true)
         
     }
