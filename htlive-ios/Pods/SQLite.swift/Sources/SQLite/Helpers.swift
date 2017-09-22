@@ -27,7 +27,7 @@ import sqlite3
 #elseif SQLITE_SWIFT_SQLCIPHER
 import SQLCipher
 #else
-import SQLite3
+import CSQLite
 #endif
 
 public typealias Star = (Expression<Binding>?, Expression<Binding>?) -> Expression<Void>

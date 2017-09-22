@@ -72,6 +72,11 @@ class FeedbackDetailVC: XLFormViewController {
             row.cellConfigAtConfigure["textView.placeholder"] = "Any Other Comments"
             section.addFormRow(row)
             
+            
+            
+           
+            
+            
             self.form = form
             
 
@@ -139,6 +144,16 @@ class FeedbackDetailVC: XLFormViewController {
             row.cellConfigAtConfigure["textView.placeholder"] = "Any Other Comments"
             section.addFormRow(row)
             
+            
+            
+            section = XLFormSectionDescriptor.formSection()
+            form.addFormSection(section)
+            
+            // Notes
+            row = XLFormRowDescriptor(tag: "reason", rowType:XLFormRowDescriptorTypeInfo, title:"Reason")
+            row.value = activity?.reason
+            
+            section.addFormRow(row)
             self.form = form
             
 

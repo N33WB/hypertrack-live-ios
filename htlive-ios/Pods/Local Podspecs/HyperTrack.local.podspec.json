@@ -40,7 +40,7 @@
     "HyperTrack/Models/*.swift",
     "HyperTrack/Utils/*.swift",
     "HyperTrack/Map/*.swift",
-    "HyperTrack/Servicee/*.swift",
+    "HyperTrack/Services/*.swift",
     "HyperTrack/DB/*.swift",
     "HyperTrack/Placeline/*.swift",
     "HyperTrack/*.h"

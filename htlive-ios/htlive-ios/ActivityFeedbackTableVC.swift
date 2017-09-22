@@ -19,7 +19,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     let accurateColor = UIColor.init(red: 4.0/255.0, green: 235.0/255.0, blue: 135.0/255.0, alpha: 1)
     public var processedSegments = [HTSegment]()
     var isDetailedView = false
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,8 +31,8 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action:#selector(dismissVC))
         activities = HyperTrack.getActivitiesFromSDK(date: Date())
         segments = HyperTrack.getSegments(date:Date())
-
-         if !isDetailedView{
+        
+        if !isDetailedView{
             processedSegments =  processSegments(segments: segments!)
         }
         print(processedSegments.description )
@@ -74,7 +74,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                         if getDuration(segment: segment) > 20 {
                             currentStop?.segments?.append(activity!)
                         }
-
+                        
                     }else{
                         currentStop = nil
                         stopEndTime = nil
@@ -129,8 +129,8 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             return (processedSegments.count)
         }
         return 0
-}
-
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -154,8 +154,6 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             var currentActivity = HyperTrack.getCurrentActivity()
             cell.setUpSegment(segment: currentActivity!)
             cell.setUpActivity(activity: currentActivity!)
-
-
         }else {
             var segment = processedSegments[indexPath.row]
             cell.accessoryType = .disclosureIndicator
@@ -203,14 +201,25 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activityFeedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackDetailVC") as! FeedbackDetailVC
- 
-        let segment = processedSegments[indexPath.row]
-        activityFeedbackVC.segment  = segment
-        if segment.type == "stop"{
+        
+        
+        if indexPath.section == 0 && !isDetailedView {
+            var currentActivity = HyperTrack.getCurrentActivity()
+            activityFeedbackVC.activity = currentActivity
+            activityFeedbackVC.segment = currentActivity
             
         }else{
-            var activity = getActivityFromUUID(uuid: segment.uuid)
-            activityFeedbackVC.activity = activity
+            
+            let segment = processedSegments[indexPath.row]
+            activityFeedbackVC.segment  = segment
+            if segment.type == "stop"{
+                
+            }else{
+                
+                var activity = getActivityFromUUID(uuid: segment.uuid)
+                activityFeedbackVC.activity = activity
+                activityFeedbackVC.segment = segment
+            }
         }
         self.navigationController?.pushViewController(activityFeedbackVC, animated: true)
         
