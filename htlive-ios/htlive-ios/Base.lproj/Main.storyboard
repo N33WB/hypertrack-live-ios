@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yRG-pA-NEA">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,20 +17,36 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="nE8-gU-cZC">
+            <objects>
+                <navigationController id="yRG-pA-NEA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KZK-QZ-7dV">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uve-d3-rHc" kind="relationship" relationship="rootViewController" id="Qwg-0G-Rxj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E6S-7W-MXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3457" y="1069"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="T3v-FO-REz">
             <objects>
                 <tableViewController storyboardIdentifier="ActivityFeedbackTableVC" id="uve-d3-rHc" customClass="ActivityFeedbackTableVC" customModule="htlive_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="d8V-4C-qzJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="144" sectionHeaderHeight="18" sectionFooterHeight="18" id="d8V-4C-qzJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="80" id="rDB-HG-M4F" customClass="ActivityTableViewCell" customModule="htlive_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="200" id="rDB-HG-M4F" customClass="ActivityTableViewCell" customModule="htlive_ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rDB-HG-M4F" id="bwc-jX-N0g">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Walking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VT5-wF-Ygb">
@@ -57,8 +73,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XQt-rv-egI">
+                                            <rect key="frame" x="0.0" y="72" width="320" height="122.5"/>
+                                        </mapView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="XQt-rv-egI" secondAttribute="trailing" id="6rv-3v-H2C"/>
                                         <constraint firstItem="VT5-wF-Ygb" firstAttribute="top" secondItem="bwc-jX-N0g" secondAttribute="topMargin" constant="10" id="E9Z-Ew-FYy"/>
                                         <constraint firstItem="8nN-PB-6YJ" firstAttribute="top" secondItem="xiI-d4-O9P" secondAttribute="bottom" constant="10" id="Hdm-ns-l55"/>
                                         <constraint firstItem="xiI-d4-O9P" firstAttribute="top" secondItem="bwc-jX-N0g" secondAttribute="topMargin" constant="10" id="J5m-5b-yKO"/>
@@ -67,15 +87,19 @@
                                         <constraint firstItem="5Vr-v8-uJW" firstAttribute="leading" secondItem="bwc-jX-N0g" secondAttribute="leadingMargin" constant="10" id="Rno-Ct-Y7v"/>
                                         <constraint firstItem="xiI-d4-O9P" firstAttribute="leading" secondItem="VT5-wF-Ygb" secondAttribute="trailing" constant="5" id="TOD-rf-eit"/>
                                         <constraint firstItem="5Vr-v8-uJW" firstAttribute="top" secondItem="VT5-wF-Ygb" secondAttribute="bottom" constant="10" id="WMu-Xg-COv"/>
+                                        <constraint firstItem="XQt-rv-egI" firstAttribute="leading" secondItem="bwc-jX-N0g" secondAttribute="leading" id="WXb-P9-uEV"/>
+                                        <constraint firstAttribute="bottom" secondItem="XQt-rv-egI" secondAttribute="bottom" constant="5" id="brM-0J-Q0i"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="xiI-d4-O9P" secondAttribute="trailing" constant="10" id="cUR-ck-hfH"/>
                                         <constraint firstItem="xiI-d4-O9P" firstAttribute="leading" secondItem="VT5-wF-Ygb" secondAttribute="trailing" constant="5" id="iAU-nk-wZQ"/>
                                         <constraint firstItem="VT5-wF-Ygb" firstAttribute="leading" secondItem="bwc-jX-N0g" secondAttribute="leadingMargin" constant="10" id="oJc-hk-ZkQ"/>
+                                        <constraint firstItem="XQt-rv-egI" firstAttribute="top" secondItem="5Vr-v8-uJW" secondAttribute="bottom" constant="8" id="opg-yz-JfN"/>
                                         <constraint firstItem="8nN-PB-6YJ" firstAttribute="leading" secondItem="5Vr-v8-uJW" secondAttribute="trailing" constant="10" id="ypA-9l-HVz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="activityType" destination="VT5-wF-Ygb" id="Ndd-pI-Jy8"/>
                                     <outlet property="endTime" destination="8nN-PB-6YJ" id="MFG-2X-6uO"/>
+                                    <outlet property="mapView" destination="XQt-rv-egI" id="qCW-VW-xcb"/>
                                     <outlet property="startTime" destination="xiI-d4-O9P" id="eHV-oJ-phE"/>
                                     <outlet property="subtitleText" destination="5Vr-v8-uJW" id="Hd3-fC-fdh"/>
                                 </connections>
@@ -90,7 +114,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8s-9c-SlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1455" y="1080.6338028169014"/>
+            <point key="canvasLocation" x="-2508.75" y="1067.9577464788733"/>
         </scene>
         <!--Feedback DetailVC-->
         <scene sceneID="ni7-Nq-s06">
@@ -108,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1c-QB-5o1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-743" y="827"/>
+            <point key="canvasLocation" x="-1890" y="1794"/>
         </scene>
         <!--Data Source-->
         <scene sceneID="tne-QT-ifu">

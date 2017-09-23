@@ -222,7 +222,10 @@ class HyperTrackAppService: NSObject {
         notification.alertAction = "Open"
         
         notification.fireDate = Date.init(timeInterval: 1, since: Date())
-        UIApplication.shared.scheduleLocalNotification(notification)
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.scheduleLocalNotification(notification)
+        }
     }
 
     

@@ -17,26 +17,57 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     let deletedColor  = UIColor.init(red: 248.0/255.0, green: 85.0/255.0, blue: 31.0/255.0, alpha: 1)
     let editedColor = UIColor.init(red: 173.0/255.0, green: 182.0/255.0, blue: 217.0/255.0, alpha: 1)
     let accurateColor = UIColor.init(red: 4.0/255.0, green: 235.0/255.0, blue: 135.0/255.0, alpha: 1)
-    public var processedSegments = [HTSegment]()
+    public var processedSegments = ([HTSegment](),[HTActivity]())
     var isDetailedView = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        activities = HyperTrack.getActivitiesFromSDK(date: Date())
+        
+        if !isDetailedView{
+            segments = HyperTrack.getSegments(date:Date())
+            processedSegments =  processSegments(segments: segments!)
+        }else{
+            processedSegments = (segments!,activities!)
+        }
+        self.tableView.backgroundColor = UIColor.groupTableViewBackground
+        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.title = "Activities"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action:#selector(dismissVC))
+        activities = HyperTrack.getActivitiesFromSDK(date: Date())
+        
+        if !isDetailedView{
+            segments = HyperTrack.getSegments(date:Date())
+            processedSegments =  processSegments(segments: segments!)
+        }else{
+            processedSegments = (segments!,activities!)
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action:#selector(dismissVC))
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotification(_:)), name: NSNotification.Name(rawValue: "HTActivityChangeNotification"), object: nil)
+        
+    }
+    
+    func onNotification(_ notification: Notification){
         activities = HyperTrack.getActivitiesFromSDK(date: Date())
         segments = HyperTrack.getSegments(date:Date())
         
         if !isDetailedView{
             processedSegments =  processSegments(segments: segments!)
         }
-        print(processedSegments.description )
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
+    
     
     func getDuration(segment : HTSegment) -> Double{
         if segment.endTime != nil {
@@ -48,7 +79,32 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         }
     }
     
-    func processSegments(segments:[HTSegment]) -> [HTSegment]{
+    func filterByTime(segments:[HTSegment]) -> [HTSegment]{
+        var processedSegment = [HTSegment]()
+        for segment in segments{
+            let time = getDuration(segment: segment)
+            if segment.type == "stop"{
+                if time > 120 {
+                    processedSegment.append(segment)
+                }
+            }else if segment.type == "activity"{
+                var activity = getActivityFromUUID(uuid: segment.uuid)
+                if activity?.activityType == "automotive"{
+                    if time > 90 {
+                        processedSegment.append(segment)
+                    }
+                }
+                else {
+                    if time > 30 {
+                        processedSegment.append(segment)
+                    }
+                }
+            }
+        }
+        return processedSegment
+    }
+    
+    func mergeIntoStops(segments:[HTSegment]) -> [HTSegment]{
         var processedSegment = [HTSegment]()
         var currentStop : HTSegment? = nil
         var stopEndTime : Date? = nil
@@ -57,13 +113,19 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             print(index)
             print(segment.type)
             index = index + 1
+            if segment.type == "app_terminate" {
+                continue
+            }
+            
+            if segment.type == "app_started" {
+                continue
+            }
+            
             if segment.type == "stop"{
                 currentStop = segment
                 stopEndTime = segment.endTime
                 segment.segments = [HTSegment]()
-                if getDuration(segment: segment) > 30.0 {
-                    processedSegment.append(segment)
-                }
+                processedSegment.append(segment)
                 continue
             }
             
@@ -71,31 +133,122 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                 if stopEndTime != nil {
                     if (Double((stopEndTime?.timeIntervalSince1970)!) > Double((segment.startTime?.timeIntervalSince1970)!)) {
                         var activity = getActivityFromUUID(uuid: segment.uuid)
-                        if getDuration(segment: segment) > 20 {
-                            currentStop?.segments?.append(activity!)
-                        }
-                        
+                        currentStop?.segments?.append(activity!)
                     }else{
                         currentStop = nil
                         stopEndTime = nil
-                        if getDuration(segment: segment) > 30.0 {
-                            processedSegment.append(segment)
-                        }
+                        processedSegment.append(segment)
                     }
                 }else{
+                    NSLog(segment.type)
                     var activity = getActivityFromUUID(uuid: segment.uuid)
-                    if getDuration(segment: segment) > 20 {
-                        currentStop?.segments?.append(activity!)
-                    }
+                    currentStop?.segments?.append(activity!)
                 }
             }else{
-                if getDuration(segment: segment) > 30.0 {
-                    processedSegment.append(segment)
-                }
+                processedSegment.append(segment)
             }
         }
         
         return processedSegment
+    }
+    // stop, automotive, automotive, walk, running,stationary, stop,stop,walk,walk
+    func mergeContinousSegments(segments:[HTSegment]) -> ([HTSegment],[HTActivity]){
+        var processedSegment = [HTSegment]()
+        var processedActivities = [HTActivity]()
+        var previousSegment :HTSegment? = nil
+       
+        if segments.count > 0{
+            for segment in segments{
+                
+                print(segment.type)
+                if previousSegment == nil {
+                    previousSegment = segment
+                    if segment.type == "activity"{
+                        let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                        previousSegment = currentActivity
+                    }
+                    continue
+                }
+                
+                if (segment.type == "activity"){
+                    print("---")
+                    let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                    print(currentActivity?.activityType)
+                }
+                if previousSegment?.type == segment.type {
+                    if segment.type == "activity"{
+                        let previousActivity = getActivityFromUUID(uuid: (previousSegment?.uuid)!)
+                        let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                        if previousActivity?.activityType == currentActivity?.activityType{
+                            previousSegment = self.mergeActivities(first: previousActivity!, second: currentActivity!)
+                        }
+                        else{
+                            processedSegment.append(previousSegment!)
+                            processedActivities.append(previousSegment as! HTActivity)
+                            previousSegment = currentActivity
+                        }
+                    }else if segment.type == "stop"{
+                        previousSegment = mergeSegment(first: previousSegment!, second: segment)
+                    }
+                }else{
+                    processedSegment.append(previousSegment!)
+                    if previousSegment?.type  == "activity"{
+                        processedActivities.append(previousSegment as! HTActivity)
+                    }
+                    if segment.type == "activity"{
+                        let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                        previousSegment = currentActivity
+                    }else{
+                        previousSegment = segment
+                        
+                    }
+                }
+            }
+            
+            processedSegment.append(previousSegment!)
+            
+            if previousSegment?.type  == "activity"{
+                processedActivities.append(previousSegment as! HTActivity)
+            }
+
+        }
+        
+        return (processedSegment,processedActivities)
+    }
+    
+    func mergeActivities(first:HTActivity,second:HTActivity) -> HTActivity{
+        let activity = HTActivity.init(uuid: first.uuid, type: first.activityType, startTime: first.startTime!, startLocation: first.startLocation, experimentId: first.experimentId, reason: first.reason)
+        activity.endTime = second.endTime
+        activity.endLocation = second.endLocation
+        activity.numOfSteps = (first.numOfSteps ?? 0) + (second.numOfSteps ?? 0)
+        activity.distance  = (first.distance ?? 0) + (second.distance ?? 0)
+        return activity
+    }
+    
+    func mergeSegment(first:HTSegment,second:HTSegment) -> HTSegment{
+        let segment = HTSegment.init(uuidStr: first.uuid, type: first.type)
+        segment.startTime = first.startTime
+        segment.startLocation = first.startLocation
+        segment.endTime = second.endTime
+        segment.endLocation = second.endLocation
+        segment.segments = [HTSegment]()
+        if first.segments != nil {
+            segment.segments = segment.segments! + first.segments!
+        }
+        
+        if second.segments != nil {
+            segment.segments = segment.segments! + second.segments!
+
+        }
+        return segment
+    }
+    
+    
+    func processSegments(segments:[HTSegment]) -> ([HTSegment],[HTActivity]){
+        let timeFilteredSegments = self.filterByTime(segments: segments)
+        let stopMergedSegments = self.mergeIntoStops(segments: timeFilteredSegments)
+        let continousMergedSegments = self.mergeContinousSegments(segments: stopMergedSegments)
+        return continousMergedSegments
     }
     
     func dismissVC(){
@@ -120,24 +273,51 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if isDetailedView {
-            return (self.processedSegments.count)
+            return (self.processedSegments.0.count)
         }
         
         if section == 0 {
             return 1
         }else {
-            return (processedSegments.count)
+            return (processedSegments.0.count)
         }
         return 0
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if indexPath.section == 0{
+            return 150
+        }
+        else {
+            var segment = (processedSegments.0)[indexPath.row]
+            if segment.type == "activity"{
+                var activity = getActivityFromProcessedActivities(uuid: (segment.uuid))
+                if activity?.activityType == "automotive"{
+                    return 300
+                }
+                if activity?.activityType == "stationary"{
+                    return 150
+                }
+            }
+            else{
+                return 150
+            }
+        }
+        return 200
     }
     
     
     func getActivityFromUUID(uuid : String) -> HTActivity?{
         for activity in self.activities!{
+            if activity.uuid == uuid {
+                return activity
+            }
+        }
+        return nil
+    }
+    
+    func getActivityFromProcessedActivities(uuid : String) -> HTActivity?{
+        for activity in self.processedSegments.1{
             if activity.uuid == uuid {
                 return activity
             }
@@ -152,10 +332,19 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         
         if indexPath.section == 0 && !isDetailedView {
             var currentActivity = HyperTrack.getCurrentActivity()
-            cell.setUpSegment(segment: currentActivity!)
-            cell.setUpActivity(activity: currentActivity!)
+            if currentActivity != nil {
+                cell.setUpSegment(segment: currentActivity!)
+                cell.setUpActivity(activity: currentActivity!)
+                cell.showUserLocation()
+                cell.subtitleText.text = "Live Activity"
+            }else{
+                cell.clear()
+                cell.activityType.text = "Finding Activity ..."
+            }
+            
         }else {
-            var segment = processedSegments[indexPath.row]
+            
+            var segment = (processedSegments.0)[indexPath.row]
             cell.accessoryType = .disclosureIndicator
             cell.backgroundColor = UIColor.white
             cell.contentView.alpha = 1
@@ -163,7 +352,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             cell.setUpSegment(segment: segment)
             
             if segment.type == "activity"{
-                var activity = getActivityFromUUID(uuid: (segment.uuid))
+                var activity = getActivityFromProcessedActivities(uuid: (segment.uuid))
                 if(activity != nil){
                     cell.setUpActivity(activity: activity!)
                     var feedback = UserDefaults.standard.string(forKey: (activity?.uuid)!)
@@ -176,7 +365,25 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                         }
                         cell.contentView.alpha = 0.8
                     }
+                    var endTime = activity?.endTime
+                    if activity?.endTime == nil {
+                        endTime = Date()
+                    }
+                    let locations = HyperTrack.getLocations(startTime: (activity?.startTime)!, endTime: endTime!)
+                    if activity?.activityType == "stationary"{
+                        cell.addPointsOnMap(locations: locations)
+                    }else{
+                        cell.addPolylineOnMap(locations: locations)
+                    }
                 }
+            }else{
+                var endTime = segment.endTime
+                if segment.endTime == nil {
+                    endTime = Date()
+                }
+                let locations = HyperTrack.getLocations(startTime: (segment.startTime)!, endTime: endTime!)
+
+                cell.addPointsOnMap(locations: locations)
             }
             //configure left buttons
             cell.delegate = self
@@ -210,13 +417,13 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             
         }else{
             
-            let segment = processedSegments[indexPath.row]
+            let segment = (processedSegments.0)[indexPath.row]
             activityFeedbackVC.segment  = segment
             if segment.type == "stop"{
                 
             }else{
                 
-                var activity = getActivityFromUUID(uuid: segment.uuid)
+                var activity = getActivityFromProcessedActivities(uuid: segment.uuid)
                 activityFeedbackVC.activity = activity
                 activityFeedbackVC.segment = segment
             }

@@ -241,7 +241,7 @@ class FeedbackDetailVC: XLFormViewController {
             
             let activityFeedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "ActivityFeedbackTableVC") as! ActivityFeedbackTableVC
             let navVC = UINavigationController.init(rootViewController: activityFeedbackVC)
-            activityFeedbackVC.processedSegments = (segment?.segments)!
+            activityFeedbackVC.segments = (segment?.segments)!
             activityFeedbackVC.isDetailedView = true
             self.present(navVC, animated: true, completion: nil)
         
