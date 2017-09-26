@@ -79,7 +79,40 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         }
     }
     
-    func filterByTime(segments:[HTSegment]) -> [HTSegment]{
+    func removeSmallStationarySegmentWithinAutomotive(segments:[HTSegment],activities:[HTActivity]) -> [HTSegment]{
+        var processedSegment = [HTSegment]()
+        var previousSegment : HTSegment? = nil
+        var index = 0
+        for segment in segments{
+            let time = getDuration(segment: segment)
+            if segment.type == "activity"{
+                var activity = getActivityFromUUID(uuid: segment.uuid,givenActivities: activities)
+                if activity?.activityType == "stationary"{
+                    if time < 140 {
+                        if index != 0 && index < segments.count {
+                            var nextSegment = segments[index + 1]
+                            if previousSegment?.type == "activity" && nextSegment.type == "activity"{
+                                var previousActivity = getActivityFromUUID(uuid: (previousSegment?.uuid)!,givenActivities: activities)
+                                var nextActivity =  getActivityFromUUID(uuid: nextSegment.uuid,givenActivities: activities)
+                                if previousActivity?.activityType == "automotive" && nextActivity?.activityType == "automotive"{
+                                    index = index + 1
+                                    continue
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            
+            previousSegment = segment
+            processedSegment.append(segment)
+            index = index + 1
+        }
+        return processedSegment
+    }
+    
+    func filterByTime(segments:[HTSegment], activities:[HTActivity]) -> [HTSegment]{
         var processedSegment = [HTSegment]()
         for segment in segments{
             let time = getDuration(segment: segment)
@@ -88,7 +121,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                     processedSegment.append(segment)
                 }
             }else if segment.type == "activity"{
-                var activity = getActivityFromUUID(uuid: segment.uuid)
+                var activity = getActivityFromUUID(uuid: segment.uuid,givenActivities: activities)
                 if activity?.activityType == "automotive"{
                     if time > 90 {
                         processedSegment.append(segment)
@@ -104,7 +137,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         return processedSegment
     }
     
-    func mergeIntoStops(segments:[HTSegment]) -> [HTSegment]{
+    func mergeIntoStops(segments:[HTSegment],activities:[HTActivity]) -> [HTSegment]{
         var processedSegment = [HTSegment]()
         var currentStop : HTSegment? = nil
         var stopEndTime : Date? = nil
@@ -132,7 +165,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
             if currentStop != nil{
                 if stopEndTime != nil {
                     if (Double((stopEndTime?.timeIntervalSince1970)!) > Double((segment.startTime?.timeIntervalSince1970)!)) {
-                        var activity = getActivityFromUUID(uuid: segment.uuid)
+                        var activity = getActivityFromUUID(uuid: segment.uuid,givenActivities:activities )
                         currentStop?.segments?.append(activity!)
                     }else{
                         currentStop = nil
@@ -141,7 +174,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                     }
                 }else{
                     NSLog(segment.type)
-                    var activity = getActivityFromUUID(uuid: segment.uuid)
+                    var activity = getActivityFromUUID(uuid: segment.uuid,givenActivities:activities )
                     currentStop?.segments?.append(activity!)
                 }
             }else{
@@ -152,7 +185,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         return processedSegment
     }
     // stop, automotive, automotive, walk, running,stationary, stop,stop,walk,walk
-    func mergeContinousSegments(segments:[HTSegment]) -> ([HTSegment],[HTActivity]){
+    func mergeContinousSegments(segments:[HTSegment],activities:[HTActivity]) -> ([HTSegment],[HTActivity]){
         var processedSegment = [HTSegment]()
         var processedActivities = [HTActivity]()
         var previousSegment :HTSegment? = nil
@@ -164,7 +197,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                 if previousSegment == nil {
                     previousSegment = segment
                     if segment.type == "activity"{
-                        let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                        let currentActivity = getActivityFromUUID(uuid: segment.uuid,givenActivities: activities)
                         previousSegment = currentActivity
                     }
                     continue
@@ -172,13 +205,13 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                 
                 if (segment.type == "activity"){
                     print("---")
-                    let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                    let currentActivity = getActivityFromUUID(uuid: segment.uuid, givenActivities: activities)
                     print(currentActivity?.activityType)
                 }
                 if previousSegment?.type == segment.type {
                     if segment.type == "activity"{
-                        let previousActivity = getActivityFromUUID(uuid: (previousSegment?.uuid)!)
-                        let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                        let previousActivity = getActivityFromUUID(uuid: (previousSegment?.uuid)!,givenActivities: activities)
+                        let currentActivity = getActivityFromUUID(uuid: segment.uuid, givenActivities: activities)
                         if previousActivity?.activityType == currentActivity?.activityType{
                             previousSegment = self.mergeActivities(first: previousActivity!, second: currentActivity!)
                         }
@@ -196,7 +229,7 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
                         processedActivities.append(previousSegment as! HTActivity)
                     }
                     if segment.type == "activity"{
-                        let currentActivity = getActivityFromUUID(uuid: segment.uuid)
+                        let currentActivity = getActivityFromUUID(uuid: segment.uuid,givenActivities: activities)
                         previousSegment = currentActivity
                     }else{
                         previousSegment = segment
@@ -243,12 +276,34 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
         return segment
     }
     
+    func printSegmnets(segments:[HTSegment]){
+        
+        print("-------------------")
+        
+        for segment in segments{
+            let time = getDuration(segment: segment)
+            print(time)
+            if (segment.type == "activity"){
+                let currentActivity = getActivityFromUUID(uuid: segment.uuid, givenActivities: self.activities!)
+                print(currentActivity?.activityType ?? "")
+            }else{
+                print(segment.type)
+            }
+        }
+        print("-------------------")
+
+    }
+
     
     func processSegments(segments:[HTSegment]) -> ([HTSegment],[HTActivity]){
-        let timeFilteredSegments = self.filterByTime(segments: segments)
-        let stopMergedSegments = self.mergeIntoStops(segments: timeFilteredSegments)
-        let continousMergedSegments = self.mergeContinousSegments(segments: stopMergedSegments)
-        return continousMergedSegments
+        printSegmnets(segments: segments)
+        let afterFilteredStationarySegments = self.removeSmallStationarySegmentWithinAutomotive(segments: segments,activities: self.activities!)
+        let continousMergedSegments = self.mergeContinousSegments(segments: afterFilteredStationarySegments,activities: self.activities!)
+        
+        let timeFilteredSegments = self.filterByTime(segments: continousMergedSegments.0,activities: continousMergedSegments.1)
+        let stopMergedSegments = self.mergeIntoStops(segments: timeFilteredSegments,activities: continousMergedSegments.1)
+        let finalSegments = self.mergeContinousSegments(segments: stopMergedSegments,activities: continousMergedSegments.1)
+        return finalSegments
     }
     
     func dismissVC(){
@@ -307,8 +362,8 @@ class ActivityFeedbackTableVC: UITableViewController,MGSwipeTableCellDelegate {
     }
     
     
-    func getActivityFromUUID(uuid : String) -> HTActivity?{
-        for activity in self.activities!{
+    func getActivityFromUUID(uuid : String, givenActivities:[HTActivity]) -> HTActivity?{
+        for activity in givenActivities{
             if activity.uuid == uuid {
                 return activity
             }

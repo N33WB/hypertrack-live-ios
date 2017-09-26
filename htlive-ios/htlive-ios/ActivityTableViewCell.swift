@@ -55,6 +55,28 @@ class ActivityTableViewCell: MGSwipeTableCell,MKMapViewDelegate {
         }else{
             self.subtitleText?.text = self.subtitleText.text! + " | " + timeText
         }
+        var endTime = segment.endTime
+        if endTime == nil{
+            endTime = Date()
+        }
+        if segment.type == "stop"{
+            HyperTrack.getPedometerData(startTime:segment.startTime!,endTime:endTime!){ (data, error) in
+                
+                if (error != nil) {
+                    HTLogger.shared.info("Error in handling pedometer updates")
+                }else{
+                    let distance = data?.distance as? Int ?? 0
+                    let numOfSteps = data?.numberOfSteps as? Int ?? 0
+                    DispatchQueue.main.async {
+                        self.subtitleText?.text = self.subtitleText.text! + " | \(numOfSteps.description) steps | \(distance.description) m"
+                    }
+                }
+            }
+        }
+       
+//        @objc public class func getPedometerData(startTime:Date,endTime:Date,handler: @escaping CoreMotion.CMPedometerHandler){
+//            Transmitter.sharedInstance.activityManager.pedometer.queryPedometerData(from: startTime, to: endTime, withHandler: handler)
+//        }
     }
     
     func getDuration(segment : HTSegment) -> Double{
@@ -69,32 +91,45 @@ class ActivityTableViewCell: MGSwipeTableCell,MKMapViewDelegate {
     
     func setUpActivity(activity:HTActivity){
         self.activityType.text = activity.activityType
-        self.subtitleText?.text = ""
         if activity.activityType == "walking" || activity.activityType == "running"{
-            if activity.numOfSteps != nil {
-                self.subtitleText?.text = (activity.numOfSteps?.description)! + " steps | " + (activity.distance?.description)! + " m"
+            var endTime = activity.endTime
+            if endTime == nil{
+                endTime = Date()
             }
+            HyperTrack.getPedometerData(startTime:activity.startTime!,endTime:endTime!){ (data, error) in
+
+                if (error != nil) {
+                    HTLogger.shared.info("Error in handling pedometer updates")
+                }else{
+                    let distance = data?.distance as? Int ?? 0
+                    let numOfSteps = data?.numberOfSteps as? Int ?? 0
+                    DispatchQueue.main.async {
+                        self.subtitleText?.text = self.subtitleText.text! + " | \(numOfSteps.description) steps | \(distance.description)"
+                    }
+                }
+            }
+            
         }
         
-        self.startTime.text = activity.startTime?.toString(dateFormat: "HH:mm")
-        if activity.endTime != nil {
-            self.endTime.text = activity.endTime?.toString(dateFormat: "HH:mm")
-        }
-        else{
-            self.endTime.text = ""
-        }
-        
-        var timeText = ""
-        var isLive = false
-        let timeElapsed = self.getDuration(segment: activity)
-        timeText = secondsToHoursMinutesSeconds(totalSeconds: timeElapsed)
-        
-        
-        if self.subtitleText.text == ""{
-            self.subtitleText?.text = timeText
-        }else{
-            self.subtitleText?.text = self.subtitleText.text! + " | " + timeText
-        }
+//        self.startTime.text = activity.startTime?.toString(dateFormat: "HH:mm")
+//        if activity.endTime != nil {
+//            self.endTime.text = activity.endTime?.toString(dateFormat: "HH:mm")
+//        }
+//        else{
+//            self.endTime.text = ""
+//        }
+//
+//        var timeText = ""
+//        var isLive = false
+//        let timeElapsed = self.getDuration(segment: activity)
+//        timeText = secondsToHoursMinutesSeconds(totalSeconds: timeElapsed)
+//
+//
+//        if self.subtitleText.text == ""{
+//            self.subtitleText?.text = timeText
+//        }else{
+//            self.subtitleText?.text = self.subtitleText.text! + " | " + timeText
+//        }
     }
     
     func addPointsOnMap(locations : [CLLocation]){
@@ -229,7 +264,7 @@ class ActivityTableViewCell: MGSwipeTableCell,MKMapViewDelegate {
         let seconds:Int = Int(totalSeconds.truncatingRemainder(dividingBy: 60))
         
         if hours > 0 {
-            return String(format: "%i hours %02i mins %02i secs", hours, minutes, seconds)
+            return String(format: "%i hours %02i mins", hours, minutes)
         } else if minutes > 0 {
             return String(format: "%02i mins %02i secs", minutes, seconds)
         }else {
