@@ -125,6 +125,7 @@
 		4028FD72E16F062FDF822379E7AA380E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD37510AF0C19F0060B8C6A86A8074E9 /* Foundation.framework */; };
 		40D78BDF2EA58812C6EBF3B9A6F8B9DD /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AF03895E453FF2112634D42BE8B49E /* BaseDestination.swift */; };
 		416A9A04D09A6B6B26E3031E5BA63E18 /* BranchShortUrlRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 299CF38392E432B4B3F509D9F3438B4C /* BranchShortUrlRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41D796081F87360600C78A16 /* HTExpV3Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D796071F87360600C78A16 /* HTExpV3Activities.swift */; };
 		42A70D58255D1C97C9C003F38D22ECCE /* XLFormSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A26197156C14164DAFEBF51F342AD7EF /* XLFormSliderCell.m */; };
 		436D695A49091809EEA80FCF13D4B666 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065002AA3AFAF9A7FBE0C4F41582797C /* UIKit.framework */; };
 		43B49979A7D4E27A353D2CDC458DB3D2 /* BNCLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB9A392A38B3E1E5634B921CB6580F9 /* BNCLocalization.m */; };
@@ -697,14 +698,14 @@
 		101A75A2E97EC09BBE79BD3285632EF3 /* XLFormValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormValidator.h; path = XLForm/XL/Validation/XLFormValidator.h; sourceTree = "<group>"; };
 		1020F469482548CC3F7EA3D2E76AA968 /* FABKitProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABKitProtocol.h; path = "Branch-SDK/Fabric/FABKitProtocol.h"; sourceTree = "<group>"; };
 		10D011454AB6059A7750A76B5338B623 /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarDynamicHeader.h; path = FSCalendar/FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
-		110612EE3A69CD72DFEECB6C9ACCA0EE /* MGSwipeTableCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MGSwipeTableCell.modulemap; sourceTree = "<group>"; };
+		110612EE3A69CD72DFEECB6C9ACCA0EE /* MGSwipeTableCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MGSwipeTableCell.modulemap; sourceTree = "<group>"; };
 		11B7C30E1A6AAA3C1632160F11656E7C /* XLFormButtonCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormButtonCell.m; path = XLForm/XL/Cell/XLFormButtonCell.m; sourceTree = "<group>"; };
 		122395EAF982C9F72D4C99CDE10DDCFE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		122638809777B690DF15C6F03856B3B0 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarWeekdayView.h; path = FSCalendar/FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		125EC0779D5E0FF5B1108120EA339014 /* XLFormButtonCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormButtonCell.h; path = XLForm/XL/Cell/XLFormButtonCell.h; sourceTree = "<group>"; };
 		1260E744ACA57A4AA42FB70493146F4D /* XLFormInlineRowDescriptorCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormInlineRowDescriptorCell.h; path = XLForm/XL/Cell/XLFormInlineRowDescriptorCell.h; sourceTree = "<group>"; };
 		139CC1537670B96C954C810DA7290729 /* HTStatusCardInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTStatusCardInfo.swift; sourceTree = "<group>"; };
-		13AB24DC94443CA4A2FC9CC299F866C9 /* Gzip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Gzip.framework; path = "GzipSwift-beta.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13AB24DC94443CA4A2FC9CC299F866C9 /* Gzip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gzip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1492B66DD84431CF0617AE93770EEF9E /* XLFormViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormViewController.h; path = XLForm/XL/Controllers/XLFormViewController.h; sourceTree = "<group>"; };
 		14A40D07394ADD2FC0A5518DA4224B89 /* ExpandedCard.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = ExpandedCard.xib; path = HyperTrack/Resources/ExpandedCard.xib; sourceTree = "<group>"; };
 		14F1E49E1F6553C0023370123A549234 /* AES256CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES256CBC.swift; path = Sources/AES256CBC.swift; sourceTree = "<group>"; };
@@ -722,7 +723,7 @@
 		1AF7D6525AFD920024C3FDB81563B6C8 /* BranchContentDiscoverer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchContentDiscoverer.h; path = "Branch-SDK/Branch-SDK/BranchContentDiscoverer.h"; sourceTree = "<group>"; };
 		1B094F25F25F4AC4A2B7763BFA84A8E0 /* XLFormSegmentedCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormSegmentedCell.m; path = XLForm/XL/Cell/XLFormSegmentedCell.m; sourceTree = "<group>"; };
 		1B90D01128A36E79366DA3AA08BA78BB /* BNCDeepLinkViewControllerInstance.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCDeepLinkViewControllerInstance.h; path = "Branch-SDK/Branch-SDK/BNCDeepLinkViewControllerInstance.h"; sourceTree = "<group>"; };
-		1BE6C1872EB6664C33AA9C08BC2E697E /* XLForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XLForm.framework; path = XLForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BE6C1872EB6664C33AA9C08BC2E697E /* XLForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XLForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C87363F3C6545ACA855A5AA2344E9B2 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		1DE0344D33FA29063BFBE007F0676F17 /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarTransitionCoordinator.h; path = FSCalendar/FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
 		1E85812D5F9DA3924D2CD684DC653BBB /* MarkerTitleView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MarkerTitleView.xib; path = HyperTrack/Resources/MarkerTitleView.xib; sourceTree = "<group>"; };
@@ -730,14 +731,14 @@
 		1EDD140A4F1D29CF90650686ED60E6E8 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		1F1B060FF13EBF192A358CAD6640FA5A /* XLFormDescriptorCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormDescriptorCell.h; path = XLForm/XL/Cell/XLFormDescriptorCell.h; sourceTree = "<group>"; };
 		1F236F66362D142B604639EC4676E79F /* Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Foundation.swift; path = Sources/SQLite/Foundation.swift; sourceTree = "<group>"; };
-		1F8DFD48022BE951F46596634E7372FE /* XLForm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = XLForm.modulemap; sourceTree = "<group>"; };
+		1F8DFD48022BE951F46596634E7372FE /* XLForm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = XLForm.modulemap; sourceTree = "<group>"; };
 		204F8EAACA26376D7F08E20512DCD52F /* XLFormSliderCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormSliderCell.h; path = XLForm/XL/Cell/XLFormSliderCell.h; sourceTree = "<group>"; };
 		20D4C842B633F568619B584344CD99B9 /* BranchSetIdentityRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BranchSetIdentityRequest.m; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchSetIdentityRequest.m"; sourceTree = "<group>"; };
 		20DCA8BC91F10639C816F96F08633520 /* StatusCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = StatusCardView.xib; path = HyperTrack/Resources/StatusCardView.xib; sourceTree = "<group>"; };
 		21575458CC64BAD1DD0B5B434708DA15 /* HypertrackService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HypertrackService.swift; sourceTree = "<group>"; };
 		218364BB98C28B007A45CF879FB3CFC5 /* NSExpression+XLFormAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSExpression+XLFormAdditions.h"; path = "XLForm/XL/Helpers/NSExpression+XLFormAdditions.h"; sourceTree = "<group>"; };
 		21F83327995C0D6A0EFE5577640F92B1 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2266EBB56CA94DA79B854D7A50BACF66 /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		2266EBB56CA94DA79B854D7A50BACF66 /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
 		227070C931F95C0DF39F6327E4D7141F /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		22FCA514755116803EBB61FEB95B8B00 /* HTDeviceSensorsDataHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTDeviceSensorsDataHelper.swift; sourceTree = "<group>"; };
 		23272A01A25DA851B414EFD52A5E7CB9 /* BNCLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCLog.h; path = "Branch-SDK/Branch-SDK/BNCLog.h"; sourceTree = "<group>"; };
@@ -755,7 +756,7 @@
 		2933E7BF988326FCE7F33C5775D43DC2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		297C8AB1C70B569D0D99E22960E3F057 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		299CF38392E432B4B3F509D9F3438B4C /* BranchShortUrlRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchShortUrlRequest.h; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchShortUrlRequest.h"; sourceTree = "<group>"; };
-		29D8CD2F04D803AD7781897E4BE5723C /* Pods_htlive_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_htlive_ios.framework; path = "Pods-htlive-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29D8CD2F04D803AD7781897E4BE5723C /* Pods_htlive_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_htlive_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29FE126B6550EE9F6F1EEE78F1638049 /* BNCDeviceInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCDeviceInfo.h; path = "Branch-SDK/Branch-SDK/BNCDeviceInfo.h"; sourceTree = "<group>"; };
 		2A09647B23B728461FB2B152F84F599F /* BNCLinkData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCLinkData.h; path = "Branch-SDK/Branch-SDK/BNCLinkData.h"; sourceTree = "<group>"; };
 		2A96F3E221B9E1E89C333010FA7C1CCC /* BNCFabricAnswers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BNCFabricAnswers.m; path = "Branch-SDK/Branch-SDK/BNCFabricAnswers.m"; sourceTree = "<group>"; };
@@ -767,7 +768,7 @@
 		2C91EA7D440F1B163A28E5E4636C5BC2 /* MultiStatusCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MultiStatusCardView.xib; path = HyperTrack/Resources/MultiStatusCardView.xib; sourceTree = "<group>"; };
 		2D32092AC590C7EF9A8E56441C130C3F /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
 		2DA65FFDC131E2E0FD3240270D4A3D32 /* HTLocationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTLocationManager.swift; sourceTree = "<group>"; };
-		2DB1C6624FB5DF9DCDFACD9111C4E5BA /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaAsyncSocket.framework; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DB1C6624FB5DF9DCDFACD9111C4E5BA /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE61AACD76A11DFF6D035D52A37F112 /* BNCDebug.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BNCDebug.m; path = "Branch-SDK/Branch-SDK/BNCDebug.m"; sourceTree = "<group>"; };
 		2E8C3CD1A4AEB1A913C7473A1AD0BF30 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EC123C638C3EF7BF879D83090E62612 /* NSObject+XLFormAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+XLFormAdditions.h"; path = "XLForm/XL/Helpers/NSObject+XLFormAdditions.h"; sourceTree = "<group>"; };
@@ -781,13 +782,13 @@
 		35B7A15376BCE29859C3811ADF2667D0 /* BNCConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCConfig.h; path = "Branch-SDK/Branch-SDK/BNCConfig.h"; sourceTree = "<group>"; };
 		37A104926A2317DBEF4834AA093ED87A /* CocoaAsyncSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.xcconfig; sourceTree = "<group>"; };
 		37FA6E6A518A2D48FFAC3E4DB99DC252 /* BNCServerResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCServerResponse.h; path = "Branch-SDK/Branch-SDK/Networking/BNCServerResponse.h"; sourceTree = "<group>"; };
-		3891B1B9FCE2C6B2D1F6E9E7C4AE2FFB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3891B1B9FCE2C6B2D1F6E9E7C4AE2FFB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DEE9B905DD58BCAA3239DFACB9F777 /* NSRegularExpression+Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSRegularExpression+Swift.swift"; path = "PhoneNumberKit/NSRegularExpression+Swift.swift"; sourceTree = "<group>"; };
 		38F549A1B1EF11A796674EE09484AE9B /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
 		396685B7DBB88D46B330E13296A72C8C /* XLFormDescriptorDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormDescriptorDelegate.h; path = XLForm/XL/Descriptors/XLFormDescriptorDelegate.h; sourceTree = "<group>"; };
 		3996E1E06116014DFADFE57C45667198 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
 		39F68C24BD9E09A7F166449C1E2A2D56 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		3B397D1A7E7B12E63AAED4AC708503EF /* MediumMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MediumMenu.modulemap; sourceTree = "<group>"; };
+		3B397D1A7E7B12E63AAED4AC708503EF /* MediumMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MediumMenu.modulemap; sourceTree = "<group>"; };
 		3B3FB6D0FDDA1584B3016EE2A19EB2A8 /* XLFormDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormDescriptor.h; path = XLForm/XL/Descriptors/XLFormDescriptor.h; sourceTree = "<group>"; };
 		3C1586C0020A85518120760EE14A9968 /* DestinationMarkerView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DestinationMarkerView.xib; path = HyperTrack/Resources/DestinationMarkerView.xib; sourceTree = "<group>"; };
 		3C5263338FE806E44A3A5B97D45091FA /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarDelegationFactory.h; path = FSCalendar/FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
@@ -798,6 +799,7 @@
 		3FD8EF6B0AB57CBC38693299E60FC5D3 /* XLForm.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLForm.m; path = XLForm/XL/XLForm.m; sourceTree = "<group>"; };
 		4166A49D0BC9CF824301D3117371C64A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
 		418EB69347E168AED0FB982CD2152896 /* ConsoleDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleDestination.swift; path = Sources/ConsoleDestination.swift; sourceTree = "<group>"; };
+		41D796071F87360600C78A16 /* HTExpV3Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTExpV3Activities.swift; sourceTree = "<group>"; };
 		425563F50C655BD50999767371AE0620 /* BNCLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BNCLog.m; path = "Branch-SDK/Branch-SDK/BNCLog.m"; sourceTree = "<group>"; };
 		427B96C25774680E9E977BAEDD483AAF /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = "Branch-SDK/Fabric/Answers.h"; sourceTree = "<group>"; };
 		42AF03895E453FF2112634D42BE8B49E /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/BaseDestination.swift; sourceTree = "<group>"; };
@@ -807,7 +809,7 @@
 		44FC43C610B9B0B0FA379A9842F63FD3 /* HTSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTSettings.swift; sourceTree = "<group>"; };
 		45D5E27D4E8C11E9663A646692F76D2A /* HTStatusCarouselCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTStatusCarouselCell.swift; sourceTree = "<group>"; };
 		468C2F42E4D1A84434E012F712AC153C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
-		46ACF79FED8CFE893830E1E336F4FFE4 /* MediumMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MediumMenu.framework; path = MediumMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46ACF79FED8CFE893830E1E336F4FFE4 /* MediumMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediumMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B0EB602E96AAA8B314BA1D979DA2B8 /* XLFormDateCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormDateCell.m; path = XLForm/XL/Cell/XLFormDateCell.m; sourceTree = "<group>"; };
 		47B51901E407B078914FD0FC7A81F7C3 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		47EF900623D9453416F5311143C39D81 /* NSArray+XLFormAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+XLFormAdditions.m"; path = "XLForm/XL/Helpers/NSArray+XLFormAdditions.m"; sourceTree = "<group>"; };
@@ -818,7 +820,7 @@
 		48B85D1C3A499B9442BCFF7A734105B4 /* PartialFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PartialFormatter.swift; path = PhoneNumberKit/PartialFormatter.swift; sourceTree = "<group>"; };
 		48BD3C311EDBEBE9073CB21C2C4DC32A /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = "Branch-SDK/Fabric/ANSCompatibility.h"; sourceTree = "<group>"; };
 		48CEC6A153343194310C0224850F0B9F /* UIView+XLFormAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+XLFormAdditions.m"; path = "XLForm/XL/Helpers/UIView+XLFormAdditions.m"; sourceTree = "<group>"; };
-		48E827B680E86A3D23A588586F899704 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyBeaver.framework; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E827B680E86A3D23A588586F899704 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48FEB15A280396F8023CE03F68F81B65 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		49A8F87F815FA510B06A70CF97576B3D /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = JustLog/Classes/Logger.swift; sourceTree = "<group>"; };
 		49C094B14DD9C30195E3707BB92B7689 /* BNCServerRequestQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCServerRequestQueue.h; path = "Branch-SDK/Branch-SDK/Networking/BNCServerRequestQueue.h"; sourceTree = "<group>"; };
@@ -839,7 +841,7 @@
 		5081BC695ADB1965ED941E0DD2B651D2 /* JustLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JustLog-dummy.m"; sourceTree = "<group>"; };
 		50CFB934AA065844CA11EBF2B7E72BA7 /* HTSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTSegment.swift; sourceTree = "<group>"; };
 		51DA0C46B9FE3CBEE5B27E4887A0F308 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		53320A4A4F5C144C987D930D12512C06 /* Wallet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Wallet.modulemap; sourceTree = "<group>"; };
+		53320A4A4F5C144C987D930D12512C06 /* Wallet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Wallet.modulemap; sourceTree = "<group>"; };
 		53E1D9C174008917B15367A2BE853DF2 /* NSString+XLFormAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+XLFormAdditions.h"; path = "XLForm/XL/Helpers/NSString+XLFormAdditions.h"; sourceTree = "<group>"; };
 		540A4D2EC5B4E4EC353BC84052747DC8 /* BNCError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCError.h; path = "Branch-SDK/Branch-SDK/BNCError.h"; sourceTree = "<group>"; };
 		5425AED1CC63EB0A6005580AB81E150C /* HTLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTLogger.swift; path = HyperTrack/HTLogger.swift; sourceTree = "<group>"; };
@@ -850,7 +852,7 @@
 		5711AF7B373374679ABEF5C6CFE06945 /* BranchActivityItemProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BranchActivityItemProvider.m; path = "Branch-SDK/Branch-SDK/BranchActivityItemProvider.m"; sourceTree = "<group>"; };
 		575A99FCAE9B5874D2A388E5309550BA /* MGSwipeButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
 		578A33F514114A53483DEFD643E4B2FE /* LogstashDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogstashDestination.swift; path = JustLog/Classes/LogstashDestination.swift; sourceTree = "<group>"; };
-		579ABFAE6DD0FA9D8A2138514EAE707C /* HyperTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HyperTrack.framework; path = HyperTrack.local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		579ABFAE6DD0FA9D8A2138514EAE707C /* HyperTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HyperTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		583313BD6FD47DA6AE45E5ABDA7F862C /* BranchContentDiscoveryManifest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BranchContentDiscoveryManifest.m; path = "Branch-SDK/Branch-SDK/BranchContentDiscoveryManifest.m"; sourceTree = "<group>"; };
 		58352E3D3B88F2A1CC2612EBA681CB75 /* FSCalendar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCalendar.m; path = FSCalendar/FSCalendar.m; sourceTree = "<group>"; };
 		58C2762BA6BECA83A7ADB138A892949C /* BranchView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchView.h; path = "Branch-SDK/Branch-SDK/BranchView.h"; sourceTree = "<group>"; };
@@ -878,7 +880,7 @@
 		6313D49C612B3FB2FF13FD186B0A3B9B /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		6396ECFA28137986766C5D5059BEA303 /* HTExpandedUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTExpandedUser.swift; sourceTree = "<group>"; };
 		6419D97C764642A11D77F1E0E5ABC8C8 /* BranchShortUrlRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BranchShortUrlRequest.m; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchShortUrlRequest.m"; sourceTree = "<group>"; };
-		646286818BD3DBE0398944CB382641DD /* Branch.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Branch.modulemap; sourceTree = "<group>"; };
+		646286818BD3DBE0398944CB382641DD /* Branch.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Branch.modulemap; sourceTree = "<group>"; };
 		64631F32FE7DB088CE08E03235BC4D61 /* FSCalendarConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarConstants.h; path = FSCalendar/FSCalendarConstants.h; sourceTree = "<group>"; };
 		65ABAC581AA95E216337987180DE1D8E /* SearchView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SearchView.xib; path = HyperTrack/Resources/SearchView.xib; sourceTree = "<group>"; };
 		661763D8186CFED47370411ED15B9533 /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarStickyHeader.h; path = FSCalendar/FSCalendarStickyHeader.h; sourceTree = "<group>"; };
@@ -935,7 +937,7 @@
 		7ECBF148A7EC12FCA8EEA7F598E627B9 /* Branch.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Branch.xcconfig; sourceTree = "<group>"; };
 		7FBB57FE7558444DBD36460F3D9A8433 /* MGSwipeTableCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGSwipeTableCell-prefix.pch"; sourceTree = "<group>"; };
 		7FEA2588D7D3338B1E1A920079F92138 /* XLFormCheckCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormCheckCell.h; path = XLForm/XL/Cell/XLFormCheckCell.h; sourceTree = "<group>"; };
-		804860BC9AB76A9D5F3E28190550085C /* GzipSwift-beta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "GzipSwift-beta.modulemap"; sourceTree = "<group>"; };
+		804860BC9AB76A9D5F3E28190550085C /* GzipSwift-beta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "GzipSwift-beta.modulemap"; sourceTree = "<group>"; };
 		809C8E23BA571FDDD5DDBDCBC170EBD0 /* BranchShareLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BranchShareLink.m; path = "Branch-SDK/Branch-SDK/BranchShareLink.m"; sourceTree = "<group>"; };
 		81D095C061A7DAAEFD95E616C326C938 /* BranchLoadRewardsRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BranchLoadRewardsRequest.m; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchLoadRewardsRequest.m"; sourceTree = "<group>"; };
 		826ABF6B0B6271EE932339975D67CF62 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -946,7 +948,7 @@
 		8464C9DCF9A154FA794A0EFB1FE541C4 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		846BB297E6A0CEAB1B5E11B2382B77ED /* BNCDeepLinkViewControllerInstance.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BNCDeepLinkViewControllerInstance.m; path = "Branch-SDK/Branch-SDK/BNCDeepLinkViewControllerInstance.m"; sourceTree = "<group>"; };
 		849B17811DF752AE0522CA8C9F70D176 /* BNCCallbacks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCCallbacks.h; path = "Branch-SDK/Branch-SDK/BNCCallbacks.h"; sourceTree = "<group>"; };
-		84E260E3D4392B4C34228E1BE2C74908 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84E260E3D4392B4C34228E1BE2C74908 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		852133AF3BA1D75DCD85D4B0823367D8 /* BranchRedeemRewardsRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BranchRedeemRewardsRequest.m; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchRedeemRewardsRequest.m"; sourceTree = "<group>"; };
 		856B0DE8F4BCA98079D9A33974179C15 /* BNCServerRequestQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BNCServerRequestQueue.m; path = "Branch-SDK/Branch-SDK/Networking/BNCServerRequestQueue.m"; sourceTree = "<group>"; };
 		8628ABBC7A6705413C9CD4EBA904C5D2 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
@@ -962,7 +964,7 @@
 		8ED90A5F87E948CB0905235BFB232DCA /* HTTransmitter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTTransmitter.swift; sourceTree = "<group>"; };
 		8EE2DF7A59CB93D52C18FD621612C23B /* Connection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Connection.swift; path = Sources/SQLite/Core/Connection.swift; sourceTree = "<group>"; };
 		8F7F9FD530E81075EF63F2012508545F /* BNCServerInterface.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BNCServerInterface.m; path = "Branch-SDK/Branch-SDK/Networking/BNCServerInterface.m"; sourceTree = "<group>"; };
-		90285BCA1A716626521880E4FB21D8E9 /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FSCalendar.framework; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90285BCA1A716626521880E4FB21D8E9 /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D0CD0A8BC5BB281539D16A0E895459 /* EncodedPolyline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EncodedPolyline.swift; sourceTree = "<group>"; };
 		90F05CFDDF4A98B6088719EC5E7D4F4D /* Pods-htlive-ios-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-htlive-ios-acknowledgements.plist"; sourceTree = "<group>"; };
 		916F54DD0FE9CA10A04D9329F5F059E0 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
@@ -973,7 +975,7 @@
 		935A8694771A52E019906926BD43ECDE /* BranchOpenRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchOpenRequest.h; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchOpenRequest.h"; sourceTree = "<group>"; };
 		936DF68E67210993CBB7B2D6A732CD96 /* XLFormRegexValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormRegexValidator.m; path = XLForm/XL/Validation/XLFormRegexValidator.m; sourceTree = "<group>"; };
 		938BC1D223426F42342210F77BAB5C85 /* JustLog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JustLog-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93C0748CCCF50634054883514CE8A494 /* PhoneNumberParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberParser.swift; path = PhoneNumberKit/PhoneNumberParser.swift; sourceTree = "<group>"; };
 		93D953AF8C0AE9E6EB545EEE2AFDA2A2 /* HTDeviceInfoService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTDeviceInfoService.swift; sourceTree = "<group>"; };
 		93EA4779B95CC7EFB3B2EAC48194AED6 /* SwiftyBeaver.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyBeaver.xcconfig; sourceTree = "<group>"; };
@@ -984,7 +986,7 @@
 		9521F0E984E4592403A0D75DCD0DA396 /* XLFormViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormViewController.m; path = XLForm/XL/Controllers/XLFormViewController.m; sourceTree = "<group>"; };
 		95EA93914EC01E51F296B084F61289DA /* FSCalendarExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCalendarExtensions.m; path = FSCalendar/FSCalendarExtensions.m; sourceTree = "<group>"; };
 		976AE17F819C3F18E083374A4F09CA2B /* HTTrackedUserDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTTrackedUserDataSource.swift; sourceTree = "<group>"; };
-		985B2B7E67C2721E84575DD3A0B3AEE7 /* JustLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JustLog.framework; path = JustLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		985B2B7E67C2721E84575DD3A0B3AEE7 /* JustLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JustLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98AE384746C20FB3135189436FF6AA1F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		995A19B408E49A19DBDDFBEA847F4807 /* XLFormImageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormImageCell.m; path = XLForm/XL/Cell/XLFormImageCell.m; sourceTree = "<group>"; };
 		998906C7F36CD6B412B9047A178BE955 /* BNCServerInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCServerInterface.h; path = "Branch-SDK/Branch-SDK/Networking/BNCServerInterface.h"; sourceTree = "<group>"; };
@@ -1021,9 +1023,9 @@
 		AA5CE1D3827618880277AE595DA1FE17 /* StartMarkerView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = StartMarkerView.xib; path = HyperTrack/Resources/StartMarkerView.xib; sourceTree = "<group>"; };
 		AB5605A45277F809E99B3248D25A3648 /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarHeaderView.h; path = FSCalendar/FSCalendarHeaderView.h; sourceTree = "<group>"; };
 		ABAF91131DBDEBD3791C29B6E22A237C /* BNCCommerceEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCCommerceEvent.h; path = "Branch-SDK/Branch-SDK/BNCCommerceEvent.h"; sourceTree = "<group>"; };
-		ABCC763D12C2899CCC527F510686D751 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		ABCC763D12C2899CCC527F510686D751 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		AC5601FB6C048614D80C1E570DAC619F /* HTEventsDatabase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTEventsDatabase.swift; sourceTree = "<group>"; };
-		AC78DF28A5031F49C1C174896B75562E /* SwiftyBeaver.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyBeaver.modulemap; sourceTree = "<group>"; };
+		AC78DF28A5031F49C1C174896B75562E /* SwiftyBeaver.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyBeaver.modulemap; sourceTree = "<group>"; };
 		AD32C5E54F07D3C0DA70435F946C915E /* SQLite.swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SQLite.swift.xcconfig; sourceTree = "<group>"; };
 		AD37510AF0C19F0060B8C6A86A8074E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		AE192BB423279081EAEB4C4FADCC7D9F /* XLFormRowNavigationAccessoryView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormRowNavigationAccessoryView.m; path = XLForm/XL/Helpers/Views/XLFormRowNavigationAccessoryView.m; sourceTree = "<group>"; };
@@ -1032,18 +1034,18 @@
 		AF40471089E42663BF045573FB7E008B /* XLFormDatePickerCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormDatePickerCell.h; path = XLForm/XL/Cell/XLFormDatePickerCell.h; sourceTree = "<group>"; };
 		AF5DB8691C458AB809B07382904A7E47 /* GzipSwift-beta-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GzipSwift-beta-umbrella.h"; sourceTree = "<group>"; };
 		AFD4FA23C8C3739BDEC0B5D49BC1119E /* HTScalingCarouselCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTScalingCarouselCell.swift; sourceTree = "<group>"; };
-		B0AEC8F236E83FE9AFEB398F6580A312 /* HyperTrack.local.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HyperTrack.local.modulemap; sourceTree = "<group>"; };
+		B0AEC8F236E83FE9AFEB398F6580A312 /* HyperTrack.local.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HyperTrack.local.modulemap; sourceTree = "<group>"; };
 		B122E816D44B2C37814B6D58BFCE9861 /* XLFormOptionsObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormOptionsObject.m; path = XLForm/XL/Controllers/XLFormOptionsObject.m; sourceTree = "<group>"; };
 		B17821DE5744CCAB30FF12EE4CEC3598 /* UIView+XLFormAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+XLFormAdditions.h"; path = "XLForm/XL/Helpers/UIView+XLFormAdditions.h"; sourceTree = "<group>"; };
 		B19AA6E0C92DCA8CD5E37D3F46FA5639 /* BNCDeviceInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BNCDeviceInfo.m; path = "Branch-SDK/Branch-SDK/BNCDeviceInfo.m"; sourceTree = "<group>"; };
 		B1DA47FA021D25BF48679AB68144689D /* HTExpRmOutlierActivities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTExpRmOutlierActivities.swift; path = HyperTrack/HTExpRmOutlierActivities.swift; sourceTree = "<group>"; };
-		B218371C8F1632BD0DA776D122025DD3 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PhoneNumberKit.framework; path = PhoneNumberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B218371C8F1632BD0DA776D122025DD3 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhoneNumberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3162FB8EB40EB1E4D4B0664D6250C4B /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = Sources/SQLite/Helpers.swift; sourceTree = "<group>"; };
 		B3CC552286F35D5CB79EFD316AC4DF2D /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
 		B3DA63B890B395BEAB7DA81069BE8EDE /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
 		B3EDCDB41D7F314EBD561DD346C97F9B /* Blob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Blob.swift; path = Sources/SQLite/Core/Blob.swift; sourceTree = "<group>"; };
 		B4049F5311E620AC5BFE046BA225E7D5 /* XLFormOptionsObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormOptionsObject.h; path = XLForm/XL/Controllers/XLFormOptionsObject.h; sourceTree = "<group>"; };
-		B46974FDD144BC48CDF34AABA1897DA1 /* FSCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FSCalendar.modulemap; sourceTree = "<group>"; };
+		B46974FDD144BC48CDF34AABA1897DA1 /* FSCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FSCalendar.modulemap; sourceTree = "<group>"; };
 		B48B744C4EB391747C5276811E681A39 /* SwiftyBeaver-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyBeaver-dummy.m"; sourceTree = "<group>"; };
 		B5ACF46FB167E7F5A2D2B9FB489C7E4E /* SQLite.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SQLite.swift-umbrella.h"; sourceTree = "<group>"; };
 		B5FDE0ED5C0B075CC466A70F7934D182 /* XLForm.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = XLForm.bundle; path = XLForm/XLForm.bundle; sourceTree = "<group>"; };
@@ -1063,16 +1065,16 @@
 		BBA75757761C176EBA8DA707B4E0622F /* PhoneNumberKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberKit.swift; path = PhoneNumberKit/PhoneNumberKit.swift; sourceTree = "<group>"; };
 		BBE83CC141EC0533AE464AD7A6D1CD95 /* RegexManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegexManager.swift; path = PhoneNumberKit/RegexManager.swift; sourceTree = "<group>"; };
 		BC216A9588F056B62E01789FC94A79B9 /* WalletView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WalletView.swift; path = Wallet/Classes/WalletView.swift; sourceTree = "<group>"; };
-		BCBEE1C151DE94E1EB728F6B35C2013A /* HyperTrack.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = HyperTrack.bundle; path = HyperTrack.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCBEE1C151DE94E1EB728F6B35C2013A /* HyperTrack.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperTrack.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF9305BBD6DC80F5D991D037091448E /* HTActivityExperimentHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTActivityExperimentHelper.swift; path = HyperTrack/HTActivityExperimentHelper.swift; sourceTree = "<group>"; };
-		BE57E305CC820D474141C6BEF723D8C7 /* JustLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JustLog.modulemap; sourceTree = "<group>"; };
+		BE57E305CC820D474141C6BEF723D8C7 /* JustLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = JustLog.modulemap; sourceTree = "<group>"; };
 		BE88ED9F0CB1901065118E3B981F2A64 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFD8F01EB77710448B4326DBBD18C10F /* FSCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSCalendar-umbrella.h"; sourceTree = "<group>"; };
 		BFE01C13710DE425E46C57460B731A3B /* XLFormSelectorCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormSelectorCell.h; path = XLForm/XL/Cell/XLFormSelectorCell.h; sourceTree = "<group>"; };
 		C06AE9A5A1008D0E99F022B5F33E0BA4 /* BranchViewHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchViewHandler.h; path = "Branch-SDK/Branch-SDK/BranchViewHandler.h"; sourceTree = "<group>"; };
 		C0A21E5F318055DD8EF69A8BCBABEF5B /* SQLite-Bridging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SQLite-Bridging.m"; path = "Sources/SQLiteObjc/SQLite-Bridging.m"; sourceTree = "<group>"; };
 		C10E0B0F9BC1F4D8B3E1EF9DDC6D286D /* HTLiveLocationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTLiveLocationView.swift; sourceTree = "<group>"; };
-		C1D2F302ED692870DC9F5CD2692669CA /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SQLite.framework; path = SQLite.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1D2F302ED692870DC9F5CD2692669CA /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C266ACAA228A27B3AC9104C6B862486D /* fts3_tokenizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fts3_tokenizer.h; path = Sources/SQLiteObjc/fts3_tokenizer.h; sourceTree = "<group>"; };
 		C27A0859FB75335858E2829AB8276478 /* StatusCard.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = StatusCard.xib; path = HyperTrack/Resources/StatusCard.xib; sourceTree = "<group>"; };
 		C2EA44C96FF131BBBE563F3D7963874C /* BNCNetworkService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCNetworkService.h; path = "Branch-SDK/Branch-SDK/Networking/BNCNetworkService.h"; sourceTree = "<group>"; };
@@ -1090,7 +1092,7 @@
 		C76CCAE13078AADC29C4C737DA41DCF5 /* XLFormRightDetailCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormRightDetailCell.h; path = XLForm/XL/Helpers/Views/XLFormRightDetailCell.h; sourceTree = "<group>"; };
 		C7BBC98017DDB537817D60B87376D9CB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7D54006674763EFF431BE3F2A3BA7A2 /* HyperTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HyperTrack.swift; path = HyperTrack/HyperTrack.swift; sourceTree = "<group>"; };
-		C7F3484C34FEBBA0CF8BEE58BB29440F /* PhoneNumberKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PhoneNumberKit.modulemap; sourceTree = "<group>"; };
+		C7F3484C34FEBBA0CF8BEE58BB29440F /* PhoneNumberKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PhoneNumberKit.modulemap; sourceTree = "<group>"; };
 		C7F5538BC959A274A4202241F73F06DC /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = "Branch-SDK/Fabric/Fabric.h"; sourceTree = "<group>"; };
 		C8E802262929DC13C9B9470194C89EE5 /* TextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = PhoneNumberKit/UI/TextField.swift; sourceTree = "<group>"; };
 		CA6D3D0030AF8B44941AC1D7BE48233B /* XLFormSectionDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormSectionDescriptor.m; path = XLForm/XL/Descriptors/XLFormSectionDescriptor.m; sourceTree = "<group>"; };
@@ -1132,7 +1134,7 @@
 		D70213FD11AF74CB14CBE3BE762207E7 /* HyperTrack.local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HyperTrack.local.xcconfig; sourceTree = "<group>"; };
 		D8283885C808ED6C70CF1D7EBD356EB3 /* BranchShareLink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchShareLink.h; path = "Branch-SDK/Branch-SDK/BranchShareLink.h"; sourceTree = "<group>"; };
 		D8B719AB79F846D97D747524BEC1D57A /* FSCalendarAppearance.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCalendarAppearance.m; path = FSCalendar/FSCalendarAppearance.m; sourceTree = "<group>"; };
-		DA5182E99F742DB2E4B3D1446431064A /* CocoaAsyncSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CocoaAsyncSocket.modulemap; sourceTree = "<group>"; };
+		DA5182E99F742DB2E4B3D1446431064A /* CocoaAsyncSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CocoaAsyncSocket.modulemap; sourceTree = "<group>"; };
 		DB3F6ADDEB4A5891D986E0DAFC24FDC0 /* HTTrackedUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTTrackedUser.swift; sourceTree = "<group>"; };
 		DB83A6D5DD834CF23E472C1907661074 /* XLFormPickerCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormPickerCell.h; path = XLForm/XL/Cell/XLFormPickerCell.h; sourceTree = "<group>"; };
 		DC0C2445E52E896DA43EF6336A2B851B /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
@@ -1151,7 +1153,7 @@
 		E089AF487447B14CD3B1292906DAB42E /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
 		E1467D00C414FCDC9041CE86FDE469FF /* HTPushNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTPushNotification.swift; sourceTree = "<group>"; };
 		E14D32E7A0B3B1CF58500C022EB93AE0 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
-		E1F2FDBCEBA693826B61631FEE79B675 /* MGSwipeTableCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MGSwipeTableCell.framework; path = MGSwipeTableCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F2FDBCEBA693826B61631FEE79B675 /* MGSwipeTableCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGSwipeTableCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F8A2BC397DE66FFB17718783093CD6 /* XLFormSwitchCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XLFormSwitchCell.m; path = XLForm/XL/Cell/XLFormSwitchCell.m; sourceTree = "<group>"; };
 		E241BDEC6A906786756DD69375B0CC94 /* BranchSetIdentityRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchSetIdentityRequest.h; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchSetIdentityRequest.h"; sourceTree = "<group>"; };
 		E2825A697D6D26858300FA4260C54A10 /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCalendarCollectionViewLayout.h; path = FSCalendar/FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
@@ -1159,14 +1161,14 @@
 		E34F51B222CAEDA111A0E6C360116E3E /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/SQLite/Typed/Operators.swift; sourceTree = "<group>"; };
 		E416D21BA8C0D0A6F9C63D8F4D828D26 /* MarkerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 		E431C59592D4A76E09232E52CC56B6E1 /* Data+Representation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Representation.swift"; path = "JustLog/Extensions/Data+Representation.swift"; sourceTree = "<group>"; };
-		E44BFF52F05733EFA2A81721845E51A3 /* Branch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Branch.framework; path = Branch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44BFF52F05733EFA2A81721845E51A3 /* Branch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Branch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C6635113D02F916957502933E2837C /* BranchInstallRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchInstallRequest.h; path = "Branch-SDK/Branch-SDK/Networking/Requests/BranchInstallRequest.h"; sourceTree = "<group>"; };
 		E4F5DBBF5AA1C67DA9C02212DF4066AB /* PlacelineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlacelineView.swift; sourceTree = "<group>"; };
 		E506B044A778E110973A2A91D8C94401 /* Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base64.swift; path = Sources/Base64.swift; sourceTree = "<group>"; };
 		E54CDD4D75512F5CF391067B5F40A62C /* MetadataTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataTypes.swift; path = PhoneNumberKit/MetadataTypes.swift; sourceTree = "<group>"; };
-		E5EF790D3409D07DA1A020ADFC417B33 /* Pods-htlive-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-htlive-ios.modulemap"; sourceTree = "<group>"; };
+		E5EF790D3409D07DA1A020ADFC417B33 /* Pods-htlive-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-htlive-ios.modulemap"; sourceTree = "<group>"; };
 		E63AB1D0B4786AD0CDCE3B1D5286F4D1 /* BNCDebug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BNCDebug.h; path = "Branch-SDK/Branch-SDK/BNCDebug.h"; sourceTree = "<group>"; };
-		E6C65D11E077A63544624CF5F7F90C12 /* Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Wallet.framework; path = Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6C65D11E077A63544624CF5F7F90C12 /* Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D45DF5FE8414ECBD1F0E00DCAE8BF3 /* Pods-htlive-ios-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-htlive-ios-frameworks.sh"; sourceTree = "<group>"; };
 		E6F306CC2D08EC163CD970BA48829B1F /* BranchActivityItemProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BranchActivityItemProvider.h; path = "Branch-SDK/Branch-SDK/BranchActivityItemProvider.h"; sourceTree = "<group>"; };
 		E75E23A1B66F73C5A621039557AC05B5 /* HTLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTLocation.swift; sourceTree = "<group>"; };
@@ -1203,8 +1205,8 @@
 		FB41AA1F26434A5C6C4813B85AE897D5 /* HTLocationPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTLocationPickerView.swift; sourceTree = "<group>"; };
 		FC06BB06217204219CAB7CE9F2EF254F /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		FCD31F56C925CE4E16DA36B0BD2D72A3 /* XLFormOptionsViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XLFormOptionsViewController.h; path = XLForm/XL/Controllers/XLFormOptionsViewController.h; sourceTree = "<group>"; };
-		FCD718CE88707A8FB847B43DB5564DD0 /* SQLite.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SQLite.swift.modulemap; sourceTree = "<group>"; };
-		FDBB7F2314DC6118E49F678D86CA6924 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
+		FCD718CE88707A8FB847B43DB5564DD0 /* SQLite.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SQLite.swift.modulemap; sourceTree = "<group>"; };
+		FDBB7F2314DC6118E49F678D86CA6924 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		FDDA1B7DA474339A9BE009D4CB33C43D /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = "Branch-SDK/Fabric/FABAttributes.h"; sourceTree = "<group>"; };
 		FF2350912A9EADA91A2B037BAAC5C30B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5D5401EC055636B23F5CDEC5AD4145 /* Wallet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Wallet-dummy.m"; sourceTree = "<group>"; };
@@ -1385,7 +1387,6 @@
 				55A34BC8AC5FA652BE0280A312DDD99D /* SwiftyBeaver.swift */,
 				106F48AD79BB7F26B34FE3D0137DB656 /* Support Files */,
 			);
-			name = SwiftyBeaver;
 			path = SwiftyBeaver;
 			sourceTree = "<group>";
 		};
@@ -1410,7 +1411,6 @@
 				D45181F46EFF1A73590F54138446A4FF /* Fabric.h */,
 				37B879CB9B036E0AD9422EF66FA48F7A /* Frameworks */,
 			);
-			name = Fabric;
 			path = Fabric;
 			sourceTree = "<group>";
 		};
@@ -1566,7 +1566,6 @@
 				74E9B38B2D7E3278F74BE5317FC71898 /* Resources */,
 				F5B48DE0AD573C10965340DE446911BD /* Support Files */,
 			);
-			name = XLForm;
 			path = XLForm;
 			sourceTree = "<group>";
 		};
@@ -1592,7 +1591,6 @@
 				77D8E35C793499A47961428680811F1D /* Validation.swift */,
 				265B549BD5F19119D242270E6FC60931 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1710,7 +1708,6 @@
 				6078E85A37256563DB759A7FE710F4E9 /* FSCalendarWeekdayView.m */,
 				A93020685412F127A2C6E66AC02F8DEA /* Support Files */,
 			);
-			name = FSCalendar;
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
@@ -1735,7 +1732,6 @@
 				A79603207C4DFF347DC056CBC59DF53D /* MediumMenuItem.swift */,
 				87875AD546C7C610B5E41AA9D61C440A /* Support Files */,
 			);
-			name = MediumMenu;
 			path = MediumMenu;
 			sourceTree = "<group>";
 		};
@@ -1773,7 +1769,6 @@
 				709BFA122129611ED4DE032870D39778 /* Core */,
 				6531C205DCAE0B05F3780433A1048064 /* Support Files */,
 			);
-			name = Branch;
 			path = Branch;
 			sourceTree = "<group>";
 		};
@@ -1815,7 +1810,6 @@
 				68C4C2E9B85813A2D78278BFD8CF9A70 /* UIDevice+Info.swift */,
 				9DBDDA550332DB015EF1A5EA056480B7 /* Support Files */,
 			);
-			name = JustLog;
 			path = JustLog;
 			sourceTree = "<group>";
 		};
@@ -1840,7 +1834,6 @@
 				BC216A9588F056B62E01789FC94A79B9 /* WalletView.swift */,
 				4463E17246F53151CB8A8C28B7844000 /* Support Files */,
 			);
-			name = Wallet;
 			path = Wallet;
 			sourceTree = "<group>";
 		};
@@ -1868,7 +1861,6 @@
 				4390188A377EE0DB630FACA2AE7BA2DA /* GCD */,
 				CB17FDDC52087AB13240E5FE8D51738E /* Support Files */,
 			);
-			name = CocoaAsyncSocket;
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
@@ -1995,7 +1987,6 @@
 				B242EE60463619F6BBDA3EF7ED682D71 /* Support Files */,
 				F8ACEA76CA1B88F7CB240E059D5BE74F /* UIKit */,
 			);
-			name = PhoneNumberKit;
 			path = PhoneNumberKit;
 			sourceTree = "<group>";
 		};
@@ -2065,7 +2056,6 @@
 				A6FB7D571082259147EE3D2DD3384D49 /* MGSwipeTableCell.m */,
 				51DC0CDE3581A77CF022422015DD4EE8 /* Support Files */,
 			);
-			name = MGSwipeTableCell;
 			path = MGSwipeTableCell;
 			sourceTree = "<group>";
 		};
@@ -2098,6 +2088,7 @@
 				EFEDF60FA1A4666F0D8B48FA70633051 /* HTSDKControls.swift */,
 				EF9B5CA81E68099023F2C90657909518 /* HyperTrack.h */,
 				C7D54006674763EFF431BE3F2A3BA7A2 /* HyperTrack.swift */,
+				41D796071F87360600C78A16 /* HTExpV3Activities.swift */,
 				225E7EE5AAD9DA9E90BCEC2A0DEA35BE /* DB */,
 				A56D50B46541886227B15F3F5219112A /* Map */,
 				A2F013700169766A7CEF2CDF478ED655 /* Models */,
@@ -2118,7 +2109,6 @@
 				842FA569686D427E107686ADFFD30B06 /* MBProgressHUD.m */,
 				5D709DFA346FEE0FE54D9C63283FC9D2 /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -2128,7 +2118,6 @@
 				2D7A74AA3D4557064830FD7B6F6B4F1D /* standard */,
 				459792C48D69597F5EFD7C1E30990500 /* Support Files */,
 			);
-			name = SQLite.swift;
 			path = SQLite.swift;
 			sourceTree = "<group>";
 		};
@@ -2357,7 +2346,6 @@
 				0F9790E02E1B3AE0AC36533A700F602D /* Data+Gzip.swift */,
 				A841A08A63BC8172825683FC3010CA14 /* Support Files */,
 			);
-			name = "GzipSwift-beta";
 			path = "GzipSwift-beta";
 			sourceTree = "<group>";
 		};
@@ -2373,7 +2361,6 @@
 				7218A231243EE73CBED53935FCC07FD4 /* Crashlytics.h */,
 				1FCA75F00E9530A1E510480B8909A4CD /* Frameworks */,
 			);
-			name = Crashlytics;
 			path = Crashlytics;
 			sourceTree = "<group>";
 		};
@@ -3229,6 +3216,7 @@
 				027F5C494EAB8FE17C80C78F9EBDA301 /* HTEvent.swift in Sources */,
 				2E2AE741AE421492BBB606508D94A95B /* HTEventsDatabase.swift in Sources */,
 				9F3C5F3FB3D127B64EBA5381A8EBE54C /* HTEventsDelegate.swift in Sources */,
+				41D796081F87360600C78A16 /* HTExpV3Activities.swift in Sources */,
 				0FA2A896E47264A31BFE08409BE853AD /* HTEventsManager.swift in Sources */,
 				337AE33F4E118C17220F73E6ABC30DE6 /* HTExpandedUser.swift in Sources */,
 				E5F8C567B3FACD719567E1E8D8029CFE /* HTExpRmOutlierActivities.swift in Sources */,
