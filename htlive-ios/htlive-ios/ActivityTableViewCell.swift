@@ -63,7 +63,7 @@ class ActivityTableViewCell: MGSwipeTableCell,MKMapViewDelegate {
             HyperTrack.getPedometerData(startTime:segment.startTime!,endTime:endTime!){ (data, error) in
                 
                 if (error != nil) {
-                    HTLogger.shared.info("Error in handling pedometer updates")
+                    NSLog("Error in handling pedometer updates")
                 }else{
                     let distance = data?.distance as? Int ?? 0
                     let numOfSteps = data?.numberOfSteps as? Int ?? 0
@@ -99,7 +99,7 @@ class ActivityTableViewCell: MGSwipeTableCell,MKMapViewDelegate {
             HyperTrack.getPedometerData(startTime:activity.startTime!,endTime:endTime!){ (data, error) in
 
                 if (error != nil) {
-                    HTLogger.shared.info("Error in handling pedometer updates")
+                    NSLog("Error in handling pedometer updates")
                 }else{
                     let distance = data?.distance as? Int ?? 0
                     let numOfSteps = data?.numberOfSteps as? Int ?? 0

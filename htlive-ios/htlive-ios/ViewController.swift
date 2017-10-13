@@ -154,8 +154,17 @@ class ViewController: UIViewController {
     func onForegroundNotification(_ notification: Notification){
         
         selectCalendarToCurrentDate()
-        self.dateLabel.text = Date().toString(dateFormat: "dd MMMM")
-        getPlaceLineData()
+        if self.calendar.maximumDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
+            self.dateLabel.text = Date().toString(dateFormat: "dd MMMM")
+            getPlaceLineData()
+        }
+        else{
+            self.calendar.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                self.dateLabel.text = Date().toString(dateFormat: "dd MMMM")
+                self.getPlaceLineData()
+            })
+        }
     }
     
     func userCreated(_ notification: Notification) {

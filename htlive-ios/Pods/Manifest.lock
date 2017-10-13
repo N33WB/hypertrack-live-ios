@@ -3,22 +3,19 @@ PODS:
   - Branch (0.18.8):
     - Branch/Core (= 0.18.8)
   - Branch/Core (0.18.8)
-  - CocoaAsyncSocket (7.5.1):
-    - CocoaAsyncSocket/GCD (= 7.5.1)
-  - CocoaAsyncSocket/GCD (7.5.1)
+  - CocoaLumberjack/Default (3.3.0)
+  - CocoaLumberjack/Swift (3.3.0):
+    - CocoaLumberjack/Default
   - Crashlytics (3.8.6):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.13)
   - FSCalendar (2.7.9)
-  - GzipSwift-beta (4.0.0-beta.2)
-  - HyperTrack.local (0.4.46):
+  - GzipSwift (4.0.0)
+  - HyperTrack.local (0.4.61):
     - Alamofire (= 4.4.0)
-    - GzipSwift-beta (= 4.0.0-beta.2)
-    - JustLog
+    - CocoaLumberjack/Swift
+    - GzipSwift
     - SQLite.swift (= 0.11.2)
-  - JustLog (1.3.0):
-    - CocoaAsyncSocket (~> 7.5.0)
-    - SwiftyBeaver (~> 1.4.0)
   - MBProgressHUD (1.0.0)
   - MediumMenu (1.2.0)
   - MGSwipeTableCell (1.6.1)
@@ -31,7 +28,6 @@ PODS:
   - SQLite.swift (0.11.2):
     - SQLite.swift/standard (= 0.11.2)
   - SQLite.swift/standard (0.11.2)
-  - SwiftyBeaver (1.4.1)
   - Wallet (1.4.1)
   - XLForm (3.3.0)
 
@@ -55,19 +51,17 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Branch: c8181636136a8ac2477f42ec8b811f50aa359c8c
-  CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
+  CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
   Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
   Fabric: 2fb5676bc811af011a04513451f463dac6803206
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
-  GzipSwift-beta: b74b704e17b4b7ea1de99460ec5ad6458d078f32
-  HyperTrack.local: fa8847586cbb36be52243d4a8f9a24c167bfd231
-  JustLog: 88ddc70d5c1e8dcc4de3b94899905975c180e9b2
+  GzipSwift: 1aab4a3d3b2f2509f78c7405bbaf535184ac6c7f
+  HyperTrack.local: e85160230c2489f69211fb5fd33f163f256e41b3
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MediumMenu: ccae15abe7fc85d4cc0c5bbff48735607d6087f1
   MGSwipeTableCell: 19a1d65dcc1ceaea42eb44bb2adae32101904514
   PhoneNumberKit: a739c359d05701e2e9745654f53e7c64379c2516
   SQLite.swift: 670c3e9e0a806bbfd56a3de5d530768dc0e6fe7c
-  SwiftyBeaver: f04f739cca6826c5fb0f575fed8fa3293f76b83e
   Wallet: 9f2942aa81aacf627fee3a42c11acf97fbacbd5d
   XLForm: d5c391dfc62865927b5bcab0a5a0dbfb3e02b0ec
 

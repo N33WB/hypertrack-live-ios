@@ -1,6 +1,6 @@
 {
   "name": "HyperTrack.local",
-  "version": "0.4.46",
+  "version": "0.4.61",
   "summary": "HyperTrack - The location SDK",
   "license": {
     "type": "Copyright",
@@ -19,10 +19,10 @@
     "SQLite.swift": [
       "0.11.2"
     ],
-    "GzipSwift-beta": [
-      "4.0.0-beta.2"
+    "GzipSwift": [
+
     ],
-    "JustLog": [
+    "CocoaLumberjack/Swift": [
 
     ]
   },
@@ -37,13 +37,9 @@
   "public_header_files": "HyperTrack/*.h",
   "source_files": [
     "HyperTrack/*.swift",
-    "HyperTrack/Models/*.swift",
-    "HyperTrack/Utils/*.swift",
-    "HyperTrack/Map/*.swift",
-    "HyperTrack/Services/*.swift",
-    "HyperTrack/DB/*.swift",
-    "HyperTrack/Placeline/*.swift",
-    "HyperTrack/*.h"
+    "HyperTrack/*/*.swift",
+    "HyperTrack/*.h",
+    "HyperTrack/*/*/*.swift"
   ],
   "resource_bundles": {
     "HyperTrack": [
