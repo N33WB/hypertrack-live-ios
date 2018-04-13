@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     fileprivate let orderCollectionIdKey = "htOrderTrackingCollectionId"
     fileprivate var collectionId = ""
     fileprivate var sharedCollectionId = ""
+    fileprivate var mapProvider: HTGoogleMapsProvider!
 
     fileprivate lazy var loaderContainer: UIView = {
         let view = UIView(frame: .zero)
@@ -39,14 +40,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentView = HTMapContainer(frame: .zero)
-        view.addSubview(contentView)
-        HyperTrack.requestAlwaysLocationAuthorization { (_) in
-            
-        }
-        contentView.edges()
-        contentView.cleanUp()
-        enableSummaryUseCase()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.mapProvider = HTGoogleMapsProvider()
+            self.contentView = HTMapContainer(frame: .zero, mapProvider: self.mapProvider)
+            self.view.addSubview(self.contentView)
+            self.contentView.edges()
+            self.enableSummaryUseCase()
+            self.contentView.showCurrentLocation = true
+            self.contentView.cleanUp()
+        })
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.onForegroundNotification), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(trackUsingUrl), name: NSNotification.Name(rawValue:HTLiveConstants.trackUsingUrl), object: nil)
@@ -169,8 +171,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.view.resignFirstResponder()
-        contentView.showCurrentLocation = true
-        contentView.cleanUp()
     }
     
     override func didReceiveMemoryWarning() {

@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import HyperTrack
 import UserNotifications
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         UIApplication.shared.registerForRemoteNotifications();
+        GMSServices.provideAPIKey("AIzaSyAJCxHCxolvFgXSsM0By3uimsmDo70tXjg")
         HTProvider.style.fonts = AppFontProvider()
         return HyperTrackAppService.sharedInstance.applicationDidFinishLaunchingWithOptions(launchOptions: launchOptions)
     }
