@@ -79,9 +79,9 @@ class HTGoogleMapsProvider: NSObject, HTMapsProviderProtocol {
         mapView.delegate = (delegate ?? self)
         mapView.isMyLocationEnabled = false
         mapView.setMinZoom(9, maxZoom: 30)
-        debouncedOperation = HTDebouncer(delay: 0.5, callback: { [unowned self] in
+        debouncedOperation = HTDebouncer(delay: 0.5, callback: { [weak self] in
 //            guard self.locatedUser else { return }
-            self.centerMapOnAllAnnotations(true)
+            self?.centerMapOnAllAnnotations(true)
         })
         HyperTrack.setLocationUpdatesDelegate(self)
         currentLocationMarker.map = mapView
@@ -221,7 +221,16 @@ extension HTGoogleMapsProvider: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         marker.tracksInfoWindowChanges = true
-        return nil
+        if let htMarker = marker as? HTGoogleMapsMarker {
+            guard let metaData = htMarker.data.callout?.metaData else { return nil }
+            let view = HTCalloutView(arrangedSubviews: [], metaData: metaData)
+            view.translatesAutoresizingMaskIntoConstraints = true
+            view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width * 0.4, height: CGFloat(htMarker.data.callout?.components.count ?? 0) * 40)
+            view.data = htMarker.data.callout
+            return view
+        } else {
+            return nil
+        }
     }
 }
 
@@ -298,10 +307,7 @@ extension HTGoogleMapsProvider: HTLocationUpdatesDelegate {
         locations.forEach({
             currentLocationMarker.position = $0.coordinate
         })
-//        guard let last = locations.last else { return }
-//        CATransaction.setAnimationDuration(HTProvider.animationDuration)
-//        CATransaction.begin()
-//        
-//        CATransaction.commit()
     }
 }
+
+

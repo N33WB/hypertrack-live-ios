@@ -60,7 +60,7 @@ extension AppDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         
         
-        if (HyperTrack.isHyperTrackNotification(userInfo: userInfo)){
+        if HyperTrack.isHyperTrackNotification(userInfo: userInfo) {
             HyperTrack.didReceiveRemoteNotification(userInfo: userInfo)
         }
         
